@@ -1,0 +1,10 @@
+{
+  "taskNameForLevel1":"Намери чудовището",
+  "taskNameForLevel2":"Намери грешката",
+  "taskNameForLevel3":" Подреди подред",
+  "taskNameForLevel4":" Подреди подред",
+  "descriptionForLevel1": "Подреди буквите от азбуката последователно",
+  "descriptionForLevel2": "Премахни излишните букви",
+  "descriptionForLevel3": "Постави буквите в правилната последователност",
+  "descriptionForLevel4": "Избери правилния път и подреди азбуката"
+}

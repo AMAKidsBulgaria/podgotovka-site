@@ -1,0 +1,29 @@
+{
+  "settings": "Настройки",
+  "start": "Старт",
+  "info": "Информация",
+  "targets": "Цели",
+  "seconds": "сек",
+  "min": "мин",
+  "minimum": "Минимум",
+  "maximum": "Максимум",
+  "controls": {
+    "level": "Ниво",
+    "gameTime": "Време на игра",
+    "dataComplexity": "Речник",
+    "speed": "Скорост",
+    "flyElemsQty": "Летящи облачета",
+    "autoSwitch": "Автоматично превключване",
+    "complexity": "Сложност",
+"maxLettersQty": "Максимум букви в дума",
+    "wordsCategory": "Категория думи",
+    "answersQty": "Количество отговори",
+    "theme": "Тема",
+    "syllablesCategory": "Категория срички"
+  },
+  "values": {
+    "item": "Предмет",
+    "sign": "Признак",
+    "action": "Действие"
+  }
+}

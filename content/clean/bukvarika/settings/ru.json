@@ -1,0 +1,15 @@
+{
+  "settings": "Настройки",
+  "exit": "Изход",
+  "start": "Старт",
+  "controls": {
+    "level": "Ниво",
+    "speed": "Скорост",
+    "answersQty": "Брой отговори",
+    "lettersQty":"Букви подред",
+    "gameTime": "Време за игра",
+    "lessonNumber": "Номер на урока",
+    "autoSwitch": "Автоматично превключване",
+    "stageNumber": "Етап"
+  }
+}

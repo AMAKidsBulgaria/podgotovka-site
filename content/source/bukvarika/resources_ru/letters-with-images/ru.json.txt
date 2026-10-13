@@ -1,0 +1,684 @@
+инструкция:
+названия слов отвечают картинкам.
+когда дойдет веремя делать этот файл, нужно посоветоваться с разработчиком
+
+
+export const data = [
+    {
+        word: 'Барабан',
+        imgSrc: 'b/baraban'
+    },
+    {
+        word: 'Банан',
+        imgSrc: 'b/banan'
+    },
+    {
+        word: 'Бъчва',
+        imgSrc: 'b/botcha'
+    },
+    { /// добавив 30.07.20
+        word: 'Пеперуда',
+        imgSrc: 'b/babochka'
+    },
+    { /// добавив 30.07.20
+        word: 'Баба',
+        imgSrc: 'b/babushka'
+    },
+    { /// добавив 30.07.20
+        word: 'Катерица',
+        imgSrc: 'b/belka'
+    },
+    {
+        word: 'Чиния',
+        imgSrc: 'b/bludtce'
+    },
+    {
+        word: 'Вагон',
+        imgSrc: 'v/vagon'
+    },
+    {
+        word: 'Кофа',
+        imgSrc: 'v/vedro'
+    },
+    {
+        word: 'Вилица',
+        imgSrc: 'v/vulka'
+    },
+    {
+        word: 'Весло',
+        imgSrc: 'v/veslo'
+    },
+    {
+        word: 'Гора',
+        imgSrc: 'g/gora'
+    },
+    {  /// добавив 30.07.20
+        word: 'Око',
+        imgSrc: 'g/glaz'
+    },
+    {  /// добавив 30.07.20
+        word: 'Джудже',
+        imgSrc: 'g/gnom'
+    },
+    {  /// добавив 30.07.20
+        word: 'Гълъб',
+        imgSrc: 'g/golyb'
+    },
+    {
+        word: 'Гъба',
+        imgSrc: 'g/grub'
+    },
+    {
+        word: 'Пирон',
+        imgSrc: 'g/gvozd'
+    },
+    {
+        word: 'Глобус',
+        imgSrc: 'g/globus'
+    },
+    {
+        word: 'Врата',
+        imgSrc: 'd/dver'
+    },
+    {
+        word: 'Дядо',
+        imgSrc: 'd/ded'
+    },
+    {  /// добавив 30.07.20
+        word: 'Дракон',
+        imgSrc: 'd/drakon'
+    },
+    {  /// добавив 30.07.20
+        word: 'Пъпеш',
+        imgSrc: 'd/dunya'
+    },
+    {  /// добавив 30.07.20
+        word: 'Кълвач',
+        imgSrc: 'd/dyatel'
+    },
+    {
+        word: 'Дъб',
+        imgSrc: 'd/dyb'
+    },
+    {
+        word: 'Къща',
+        imgSrc: 'd/dom'
+    },
+    {// добавив 30.07.20
+        word: 'Жълъд',
+        imgSrc: 'zh/zholyd'
+    },
+    {// добавив 30.07.20
+        word: 'Жираф',
+        imgSrc: 'zh/zhuraf'
+    },
+    {
+        word: 'Камион',
+        imgSrc: 'zh/zhyk'
+    },
+    {
+        word: 'Жерав',
+        imgSrc: 'zh/zhyravel'
+    },
+    {
+        word: 'Жълтък',
+        imgSrc: 'zh/zheltok'
+    },
+    {
+        word: 'Заек',
+        imgSrc: 'z/zajats'
+    },
+    {/// добавив 30.07.20
+        word: 'Ограда',
+        imgSrc: 'z/zabor'
+    },
+    {/// добавив 30.07.20
+        word: 'Завод',
+        imgSrc: 'z/zavod'
+    },
+    {/// добавив 30.07.20
+        word: 'Залез',
+        imgSrc: 'z/zakat'
+    },
+    {/// добавив 30.07.20
+        word: 'Завеси',
+        imgSrc: 'z/zanavesky'
+    },
+    {/// добавив 30.07.20
+        word: 'Огледало',
+        imgSrc: 'z/zerkalo'
+    },
+    {/// добавив 30.07.20
+        word: 'Бизон',
+        imgSrc: 'z/zybr'
+    },
+    {
+        word: 'Зъб',
+        imgSrc: 'z/zyb'
+    },
+    {
+        word: 'Змия',
+        imgSrc: 'z/zmeja'
+    },
+    {
+        word: 'Звезда',
+        imgSrc: 'z/zvezda'
+    },
+    {
+        word: 'Йога',
+        imgSrc: 'j/jog'
+    },
+    {
+        word: 'Йод',
+        imgSrc: 'j/jod'
+    },
+    {
+        word: 'Мляко',
+        imgSrc: 'j/jogurt'
+    },
+    {
+        word: 'Йо-йо',
+        imgSrc: 'j/jo-jo'
+    },
+    {
+        word: 'Капка',
+        imgSrc: 'k/kaplya'
+    },
+    { /// добавив 30.07.20
+        word: 'Шапка',
+        imgSrc: 'k/kepka'
+    },
+    { /// добавив 30.07.20
+        word: 'Крава',
+        imgSrc: 'k/korova'
+    },
+    { /// добавив 30.07.20
+        word: 'Корона',
+        imgSrc: 'k/korona'
+    },
+    {
+        word: 'Книга',
+        imgSrc: 'k/knuga'
+    },
+    {
+        word: 'Кутия',
+        imgSrc: 'k/korobka'
+    },
+    {
+        word: 'Чаша',
+        imgSrc: 'k/kryjka'
+    },
+    {
+        word: 'Близалка',
+        imgSrc: 'l/ledenets'
+    },
+    {
+        word: 'Крушка',
+        imgSrc: 'l/lampa'
+    },
+    {
+        word: 'Гора',
+        imgSrc: 'l/les'
+    },
+    {
+        word: 'Лъжица',
+        imgSrc: 'l/lojka'
+    },
+    { /// добавив 30.07.20
+        word: 'Лейка',
+        imgSrc: 'l/leika'
+    },
+    { /// добавив 30.07.20
+        word: 'Кон',
+        imgSrc: 'l/loshadka'
+    },
+    { /// добавив 30.07.20
+        word: 'Лук',
+        imgSrc: 'l/lyk'
+    },
+    { /// добавив 30.07.20
+        word: 'Жаба',
+        imgSrc: 'l/lagushka'
+    },
+    { /// добавив 30.07.20
+        word: 'Лос',
+        imgSrc: 'l/los'
+    },
+    { /// добавив 30.07.20
+        word: 'Малина',
+        imgSrc: 'm/maluna'
+    },
+    { /// добавив 30.07.20
+        word: 'Матрьошка',
+        imgSrc: 'm/matreshka'
+    },
+    { /// добавив 30.07.20
+        word: 'Мляко',
+        imgSrc: 'm/moloko'
+    },
+    { /// добавив 30.07.20
+        word: 'Сладолед',
+        imgSrc: 'm/morozenoje'
+    },
+    {
+        word: 'Море',
+        imgSrc: 'm/more'
+    },
+    {
+        word: 'Сапун',
+        imgSrc: 'm/mulo'
+    },
+    {
+        word: 'Майка',
+        imgSrc: 'm/majka'
+    },
+    {
+        word: 'Топка',
+        imgSrc: 'm/myach'
+    },
+    {
+        word: 'Конец',
+        imgSrc: 'n/nutka'
+    },
+    {/// добавив 30.07.20
+        word: 'Небе',
+        imgSrc: 'n/nebo'
+    },
+    {
+        word: 'Нож',
+        imgSrc: 'n/nozh'
+    },
+    {/// добавив 30.07.20
+        word: 'Ножици',
+        imgSrc: 'n/noznitsu'
+    },
+    {/// добавив 30.07.20
+        word: 'Чорап',
+        imgSrc: 'n/nosok'
+    },
+    {/// добавив 30.07.20
+        word: 'Носорог',
+        imgSrc: 'n/nosorog'
+    },
+    {
+        word: 'Нос',
+        imgSrc: 'n/nos'
+    },
+    {
+        word: 'Помпа',
+        imgSrc: 'n/nasos'
+    },
+    {
+        word: 'Трион',
+        imgSrc: 'p/pula'
+    },
+    {
+        word: 'Пещ',
+        imgSrc: 'p/pech'
+    },
+    { /// добавив 30.07.20
+        word: 'Пингвин',
+        imgSrc: 'p/pinguin'
+    },
+    { /// добавив 30.07.20
+        word: 'Слънчоглед',
+        imgSrc: 'p/podsolhyh'
+    },
+    { /// добавив 30.07.20
+        word: 'Домат',
+        imgSrc: 'p/pomidor'
+    },
+    {
+        word: 'Паяк',
+        imgSrc: 'p/payk'
+    },
+    {
+        word: 'Петел',
+        imgSrc: 'p/petyh'
+    },
+    {
+        word: 'Риба',
+        imgSrc: 'r/ruba'
+    },
+    {
+        word: 'Дъга',
+        imgSrc: 'r/raduga'
+    },
+    {/// добавив 30.07.20
+        word: 'Ракета',
+        imgSrc: 'r/raketa'
+    },
+    {/// добавив 30.07.20
+        word: 'Роза',
+        imgSrc: 'r/roza'
+    },
+    {/// добавив 30.07.20
+        word: 'Лайка',
+        imgSrc: 'r/romashka'
+    },
+    {/// добавив 30.07.20
+        word: 'Риза',
+        imgSrc: 'r/rybashka'
+    },
+    {
+        word: 'Рак',
+        imgSrc: 'r/rak'
+    },
+    {
+        word: 'Репичка',
+        imgSrc: 'r/redus'
+    },
+    {
+        word: 'Слънце',
+        imgSrc: 's/solntce'
+    },
+    {/// добавив 30.07.20
+        word: 'Слон',
+        imgSrc: 's/slon'
+    },
+    {/// добавив 30.07.20
+        word: 'Синигер',
+        imgSrc: 's/snegir'
+    },
+    {/// добавив 30.07.20
+        word: 'Снежанка',
+        imgSrc: 's/snegyrka'
+    },
+    {/// добавив 30.07.20
+        word: 'Съндък',
+        imgSrc: 's/syndyk'
+    },
+    {
+        word: 'Чанта',
+        imgSrc: 's/symka'
+    },
+    {
+        word: 'Маса',
+        imgSrc: 's/stol'
+    },
+    {
+        word: 'Шейна',
+        imgSrc: 's/sanku'
+    },
+    {
+        word: 'Тигър',
+        imgSrc: 't/tugr'
+    },
+    {
+        word: 'Трамвай',
+        imgSrc: 't/tramvai'
+    },
+    {
+        word: 'Трон',
+        imgSrc: 't/tron'
+    },
+    {/// добавив 30.07.20
+        word: 'Танк',
+        imgSrc: 't/tank'
+    },
+    {/// добавив 30.07.20
+        word: 'Телефон',
+        imgSrc: 't/telephon'
+    },
+    {/// добавив 30.07.20
+        word: 'Торта',
+        imgSrc: 't/tort'
+    },
+    {
+        word: 'Тръба',
+        imgSrc: 't/truba'
+    },
+    {
+        word: 'Фея',
+        imgSrc: 'f/feya'
+    },
+    {
+        word: 'Престилка',
+        imgSrc: 'f/fartyk'
+    },
+    {
+        word: 'Тениска',
+        imgSrc: 'f/fytbolka'
+    },
+    {
+        word: 'Фонтан',
+        imgSrc: 'f/fontan'
+    },
+    {
+        word: 'Халат',
+        imgSrc: 'h/halat'
+    },
+    {
+        word: 'Опашка',
+        imgSrc: 'h/hvost'
+    },
+    {
+        word: 'Хижа',
+        imgSrc: 'h/hata'
+    },
+    {
+        word: 'Хляб',
+        imgSrc: 'h/hleb'
+    },
+    {
+        word: 'Цифра',
+        imgSrc: 'ts/tsufra'
+    },
+    {
+        word: 'Пергел',
+        imgSrc: 'ts/tsurkul'
+    },
+    {
+        word: 'Цирк',
+        imgSrc: 'ts/tsurk'
+    },
+    {
+        word: 'Цар',
+        imgSrc: 'ts/tsar'
+    },
+    {/// добавив 30.07.20
+        word: 'Чапла',
+        imgSrc: 'ts/tsaplya'
+    },
+    {/// добавив 30.07.20
+        word: 'Цвете',
+        imgSrc: 'ts/tsvetok'
+    },
+    {/// добавив 30.07.20
+        word: 'Синджир',
+        imgSrc: 'ts/tsepochka'
+    },
+    {
+        word: 'Чашка',
+        imgSrc: 'ch/chashka'
+    },
+    {
+        word: 'Чайник',
+        imgSrc: 'ch/chainuk'
+    },
+    {/// добавив 30.07.20
+        word: 'Часовник',
+        imgSrc: 'ch/chasu'
+    },
+    {/// добавив 30.07.20
+        word: 'Червей',
+        imgSrc: 'ch/cherviak'
+    },
+    {/// добавив 30.07.20
+        word: 'Чесън',
+        imgSrc: 'ch/chesnok'
+    },
+    {
+        word: 'Череша',
+        imgSrc: 'ch/chereshnya'
+    },
+    {
+        word: 'Костенурка',
+        imgSrc: 'ch/cherepaha'
+    },
+    {
+        word: 'Шал',
+        imgSrc: 'sh/sharf'
+    },
+    {
+        word: 'Шайба',
+        imgSrc: 'sh/shaiba'
+    },
+    {
+        word: 'Колиба',
+        imgSrc: 'sh/shalash'
+    },
+    {/// добавив 30.07.20
+        word: 'Шах',
+        imgSrc: 'sh/shachmatu'
+    },
+    {/// добавив 30.07.20
+        word: 'Табла',
+        imgSrc: 'sh/shashku'
+    },
+    {
+        word: 'Шоколад',
+        imgSrc: 'sh/shokolad'
+    },
+    {
+        word: 'Кутре',
+        imgSrc: 'shc/shcenok'
+    },
+    {
+        word: 'Щука',
+        imgSrc: 'shc/shcyka'
+    },
+    {
+        word: 'Четка',
+        imgSrc: 'shc/shcetka'
+    },
+    {
+        word: 'Арфа',
+        imgSrc: 'a/arfa'
+    },
+    {
+        word: 'Ананас',
+        imgSrc: 'a/ananas'
+    },
+    {
+        word: 'Арка',
+        imgSrc: 'a/arka'
+    },
+    {
+        word: 'Акула',
+        imgSrc: 'a/akula'
+    },
+    {
+        word: 'Енот',
+        imgSrc: 'e/enot'
+    },
+    {
+        word: 'Къпина',
+        imgSrc: 'e/ejevica'
+    },
+    {
+        word: 'Еднорог',
+        imgSrc: 'e/edinorog'
+    },
+    {
+        word: 'Елха',
+        imgSrc: 'ue/uelka'
+    },
+    {
+        word: 'Таралеж',
+        imgSrc: 'ue/uejuk'
+    },
+    {
+        word: 'Игуана',
+        imgSrc: 'i/igyana'
+    },
+    {
+        word: 'Пуйка',
+        imgSrc: 'i/induk'
+    },
+    {
+        word: 'Играчка',
+        imgSrc: 'i/igryshka'
+    },
+    {
+        word: 'Ирис',
+        imgSrc: 'i/iris'
+    },
+    {
+        word: 'Орел',
+        imgSrc: 'o/orel'
+    },
+    {
+        word: 'Магаре',
+        imgSrc: 'o/osel'
+    },
+    {
+        word: 'Краствица',
+        imgSrc: 'o/ogyrets'
+    },
+    {
+        word: 'Очила',
+        imgSrc: 'o/ochku'
+    },
+    {
+        word: 'Усмивка',
+        imgSrc: 'y/ylubka'
+    },
+    {
+        word: 'Ураган',
+        imgSrc: 'y/yragan'
+    },
+    {
+        word: 'Учител',
+        imgSrc: 'y/ychutel'
+    },
+    {
+        word: 'Еклер',
+        imgSrc: 'je/jekler'
+    },
+    {
+        word: 'Елф',
+        imgSrc: 'je/jelf'
+    },
+    {
+        word: 'Ескимо',
+        imgSrc: 'je/jeskimo'
+    },
+    {
+        word: 'Екран',
+        imgSrc: 'je/jekran'
+    },
+    {
+        word: 'Юпитер',
+        imgSrc: 'ju/jupiter'
+    },
+    {
+        word: 'Юнга',
+        imgSrc: 'ju/junga'
+    },
+    {
+        word: 'Шатра',
+        imgSrc: 'ju/jurta'
+    },
+    {
+        word: 'Пумпал',
+        imgSrc: 'ju/jula'
+    },
+    {
+        word: 'Ябълка',
+        imgSrc: 'ja/jabluko'
+    },
+    {
+        word: 'Яйце',
+        imgSrc: 'ja/jajitso'
+    },
+    {
+        word: 'Ягода',
+        imgSrc: 'ja/jagoda'
+    },
+    {
+        word: 'Котва',
+        imgSrc: 'ja/jakor'
+    }
+];
+

@@ -1,0 +1,18 @@
+{
+  "alphabet": "абвгдежзийклмнопрстуфхцчшщъьюя",
+  "lettersWithoutRotation": "жнофх",
+  "lettersInfo": {
+    "alwaysSolid": "",
+    "alwaysNotSolid": "",
+    "solidBefore": "",
+    "lettersWithTwoSounds": "щюя",
+    "disabledLettersForSoundLetterParsing": "щюяь",
+    "alwaysSolidForSoundLetterParsingLevel1": ""
+  },
+  "lettersTypes": {
+    "vowel": "аъоуеи",
+    "voised": "бвгджзмлнрй",
+    "notVoised": "пфктшсчцх",
+    "consonant": "бвгджзйклмнпрстфхцчш"
+  }
+}

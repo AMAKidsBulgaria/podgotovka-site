@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Подготовка за училище</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Rubik:wght@500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="css/app.css?v=202610131936">
+<link rel="stylesheet" href="css/polish.css?v=202610131936">
+</head>
+<body>
+<div id="app" class="app">
+
+  <!-- ЕКРАН 0: Карта на модулите -->
+  <section id="screen-modules" class="screen screen-modules" hidden>
+    <svg class="bg-fill" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="1600" height="1000" fill="url(#g-modules)"/>
+      <g fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="10" stroke-linecap="round">
+        <path d="M1240 300 c-60 -90 60 -150 90 -70 c40 -90 150 -30 90 60 c-20 30 -70 60 -90 80 c-30 -20 -70 -50 -90 -70z"/>
+        <circle cx="210" cy="880" r="70"/><path d="M180 860 q30 60 60 0 q-10 40 -30 40 q-20 0 -30 -40z"/>
+        <path d="M1430 930 l70 -90 l90 20 l-60 100z M1500 840 l40 60"/>
+        <path d="M560 60 l120 -50 M600 90 l120 -50"/>
+      </g>
+    </svg>
+    <header class="module-head"><h1 class="title-outline">Подготовка за училище</h1></header>
+    <div class="modules">
+      <button class="module-card" data-module="mathematics">
+        <span class="module-name">Математика</span>
+        <svg viewBox="0 0 520 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#scene-math-mini"/></svg>
+      </button>
+      <button class="module-card" data-module="theWorld">
+        <span class="module-name">Околен свят</span>
+        <svg viewBox="0 0 520 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#scene-world-mini"/></svg>
+      </button>
+      <button class="module-card" data-module="bukvarica">
+        <span class="module-name">Букварика</span>
+        <svg viewBox="0 0 520 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#scene-village-mini"/></svg>
+      </button>
+      <button class="module-card" data-module="readica">
+        <span class="module-name">Читарика</span>
+        <svg viewBox="0 0 520 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#scene-space-mini"/></svg>
+      </button>
+    </div>
+    <footer class="foot-bar">
+      <button class="gbtn gbtn-purple" id="btn-exit-modules">Изход</button>
+      <button class="gbtn gbtn-grey" id="btn-homework">Домашна работа</button>
+    </footer>
+  </section>
+
+  <!-- ЕКРАН 1: Карта на игрите в Математика -->
+  <section id="screen-map" class="screen screen-map" hidden>
+    <svg class="bg-fill" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#scene-pirate"/></svg>
+    <header class="plank-head"><h1 class="plank">Математика</h1></header>
+    <div class="islands" id="islands" role="list" aria-label="Игри"></div>
+    <footer class="foot-bar foot-left">
+      <button class="gbtn gbtn-purple" data-go="modules">Изход</button>
+    </footer>
+  </section>
+
+  <!-- ЕКРАН 1б: Букварика — селце с къщички -->
+  <section id="screen-bmap" class="screen screen-bmap" hidden>
+    <svg class="bg-fill" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#scene-village"/></svg>
+    <header class="plank-head"><h1 class="plank">Букварика</h1></header>
+    <div class="village" id="houses" role="list" aria-label="Игри"></div>
+    <footer class="foot-bar foot-left">
+      <button class="gbtn gbtn-purple" data-go="modules">Изход</button>
+    </footer>
+  </section>
+
+  <!-- ЕКРАН 1в: Читарика — планети в космоса -->
+  <section id="screen-rmap" class="screen screen-rmap" hidden>
+    <svg class="bg-fill" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#scene-space"/></svg>
+    <header class="plank-head"><h1 class="plank">Читарика</h1></header>
+    <div class="planets" id="planets" role="list" aria-label="Игри"></div>
+    <footer class="foot-bar foot-left"><button class="gbtn gbtn-purple" data-go="modules">Изход</button></footer>
+  </section>
+  <!-- ЕКРАН 1г: Околен свят — палатки в парка -->
+  <section id="screen-wmap" class="screen screen-wmap" hidden>
+    <svg class="bg-fill" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#scene-nature"/></svg>
+    <header class="plank-head"><h1 class="plank">Околен свят</h1></header>
+    <div class="booths" id="booths" role="list" aria-label="Игри"></div>
+    <footer class="foot-bar foot-left"><button class="gbtn gbtn-purple" data-go="modules">Изход</button></footer>
+  </section>
+
+  <!-- ЕКРАН 2: Настройки върху свитък -->
+  <section id="screen-settings" class="screen screen-settings" hidden>
+    <svg class="bg-fill" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use class="bg-theme" href="#scene-pirate" data-buk="#scene-village" data-read="#scene-space" data-world="#scene-nature"/></svg>
+    <header class="plank-head"><h1 class="plank plank-wide" id="settings-title">Подводно царство</h1><div class="plank plank-sub">Настройки</div></header>
+    <form id="settings-form" class="scroll-wrap" autocomplete="off">
+      <svg class="scroll-art" viewBox="0 0 1200 720" preserveAspectRatio="none" aria-hidden="true"><use href="#parchment"/></svg>
+      <button type="button" class="info-dot" id="btn-info" aria-label="Какво означават настройките">i</button>
+      <div class="cards" id="cards"></div>
+      <div class="info-panel" id="info-panel" hidden></div>
+    </form>
+    <footer class="foot-bar foot-split">
+      <button class="gbtn gbtn-purple" data-go="map">Изход</button>
+      <button class="gbtn gbtn-green" id="btn-settings-start" type="button">Старт</button>
+    </footer>
+  </section>
+
+  <!-- ЕКРАН 3: Инструкция и трудност -->
+  <section id="screen-intro" class="screen screen-intro" hidden>
+    <svg class="bg-fill" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use class="bg-theme" href="#scene-pirate" data-buk="#scene-village" data-read="#scene-space" data-world="#scene-nature"/></svg>
+    <header class="plank-head"><h1 class="plank plank-wide" id="intro-title">Подводно царство</h1><div class="plank plank-sub" id="intro-level">Ниво 1</div></header>
+    <div class="intro-panel">
+      <div class="intro-left">
+        <svg viewBox="0 0 220 180" class="intro-art" aria-hidden="true"><use class="bg-theme" href="#art-bubble-fish" data-buk="#art-letters" data-read="#art-rocket" data-world="#art-leaf"/></svg>
+        <p class="task" id="intro-task">Побързай да хванеш балона с верния отговор.</p>
+        <button class="gbtn gbtn-sky gbtn-sm" id="btn-speak" type="button">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Чуй задачата
+        </button>
+        <p class="params-line" id="intro-params"></p>
+      </div>
+      <div class="tiers" role="radiogroup" aria-label="Колко грешки са позволени">
+        <label class="tier"><input type="radio" name="tier" value="0"><span class="tier-card"><span class="hearts" data-n="0"></span><b>Не допускай грешки</b></span></label>
+        <label class="tier"><input type="radio" name="tier" value="1" checked><span class="tier-card"><span class="hearts" data-n="1"></span><b>Имаш право на 1 грешка</b></span></label>
+        <label class="tier"><input type="radio" name="tier" value="2"><span class="tier-card"><span class="hearts" data-n="2"></span><b>Имаш право на 2 грешки</b></span></label>
+      </div>
+    </div>
+    <footer class="foot-bar foot-split">
+      <button class="gbtn gbtn-purple" data-go="map">Изход</button>
+      <button class="gbtn gbtn-grey" data-go="settings">Настройки</button>
+      <button class="gbtn gbtn-green" id="btn-start">Старт</button>
+    </footer>
+  </section>
+
+  <!-- ЕКРАН 4: Играта -->
+  <section id="screen-game" class="screen screen-game" hidden>
+    <svg class="bg-fill" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use class="bg-theme" href="#scene-sunset" data-buk="#scene-village" data-read="#scene-space" data-world="#scene-nature"/></svg>
+    <header class="plank-head"><h1 class="plank plank-wide" id="game-title">Подводно царство</h1></header>
+    <div class="frame">
+      <div class="stage" id="stage">
+        <div class="arena" id="arena"></div>
+        <div class="hud">
+          <div class="hud-pill hud-clock"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#fff" stroke="#6F5FD3" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="#6F5FD3" stroke-width="2" stroke-linecap="round"/></svg><span id="timer">0:00</span></div>
+          <div class="hud-pill hud-example" id="example" aria-live="polite"></div>
+          <div class="hud-right">
+            <button type="button" class="hud-sound" id="btn-sound" aria-label="Изключи звука"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="waves" d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="mute" d="M16 9l6 6M22 9l-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+            <div class="lives" id="lives" aria-label="Оставащи грешки"></div>
+            <div class="hud-pill hud-score"><span id="score">0</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z" fill="#7B5CE0"/></svg></div>
+          </div>
+        </div>
+        <ol id="progress" class="progress" aria-label="Напредък"></ol>
+        <div id="feedback" class="feedback" aria-live="assertive"></div>
+      </div>
+    </div>
+    <footer class="foot-bar foot-split">
+      <button class="gbtn gbtn-purple" id="btn-exit-game">Изход</button>
+      <button class="gbtn gbtn-grey" id="btn-game-settings">Настройки</button>
+    </footer>
+  </section>
+
+  <!-- ЕКРАН 5: Резултат -->
+  <section id="screen-result" class="screen screen-result" hidden>
+    <svg class="bg-fill" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#scene-pirate"/></svg>
+    <header class="plank-head"><h1 class="plank plank-wide" id="result-title">Браво, Мила!</h1></header>
+    <div class="result-scroll">
+      <svg class="scroll-art" viewBox="0 0 1200 720" preserveAspectRatio="none" aria-hidden="true"><use href="#parchment"/></svg>
+      <div class="result-inner">
+        <div class="result-stars" id="result-stars" aria-label="Оценка"></div>
+        <p class="result-sub" id="result-sub"></p>
+        <p class="rest-note" id="rest-note" hidden></p>
+        <dl class="result-stats">
+          <div><dt>Верни</dt><dd id="r-correct">0</dd></div>
+          <div><dt>Грешки</dt><dd id="r-wrong">0</dd></div>
+          <div><dt>Време</dt><dd id="r-time">0:00</dd></div>
+          <div><dt>Серия</dt><dd id="r-streak">0</dd></div>
+        </dl>
+        <details class="parent-box">
+          <summary>Какво ще види родителят</summary>
+          <div class="parent-grid">
+            <div><span class="k">Умение</span><span class="v" id="p-skill">Събиране до 6</span></div>
+            <div><span class="k">Точност</span><span class="v" id="p-acc">—</span></div>
+            <div><span class="k">Средно време за отговор</span><span class="v" id="p-rt">—</span></div>
+            <div><span class="k">Затруднили примери</span><span class="v" id="p-hard">—</span></div>
+          </div>
+        </details>
+      </div>
+    </div>
+    <footer class="foot-bar foot-split">
+      <button class="gbtn gbtn-purple" data-go="map">Към картата</button>
+      <button class="gbtn gbtn-grey" data-go="parent">Прогрес</button>
+      <button class="gbtn gbtn-green" id="btn-again">Играй пак</button>
+    </footer>
+  </section>
+
+  <!-- ЕКРАН 6: Прогрес за родителя -->
+  <section id="screen-parent" class="screen screen-parent" hidden>
+    <header class="topbar-plain">
+      <button class="gbtn gbtn-purple gbtn-sm" data-go="map">Назад</button>
+      <h1>Мила, прогрес</h1>
+      <span class="topbar-note">Изглед за родителя</span>
+    </header>
+    <div class="parent-body">
+      <div class="skill-list" id="skill-list"></div>
+      <h2>Последни сесии</h2>
+      <table class="sessions" id="sessions"><thead><tr><th>Кога</th><th>Игра</th><th>Ниво</th><th>Верни</th><th>Грешки</th><th>Време</th></tr></thead><tbody></tbody></table>
+      <p class="hint">Данните са локални, в този браузър. В реалната платформа ще стоят в общата база и ще захранват отчета на учителя и CRM.</p>
+    </div>
+  </section>
+
+  <!-- ===================== ГРАФИКА (SVG символи) ===================== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="g-modules" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2D5BE3"/><stop offset=".55" stop-color="#2FA8DA"/><stop offset="1" stop-color="#5FD9C8"/></linearGradient>
+      <linearGradient id="g-space" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B1F5E"/><stop offset="1" stop-color="#3B4CC0"/></linearGradient>
+      <linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ED4F4"/><stop offset="1" stop-color="#DFF4FC"/></linearGradient>
+      <linearGradient id="g-sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5FD0DE"/><stop offset="1" stop-color="#2A9EC6"/></linearGradient>
+      <linearGradient id="g-sand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7DE9A"/><stop offset="1" stop-color="#E9C46A"/></linearGradient>
+      <linearGradient id="g-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FDCF4"/><stop offset=".55" stop-color="#4FB4E6"/><stop offset="1" stop-color="#3A9AD3"/></linearGradient>
+      <linearGradient id="g-sunset" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B7A4F2"/><stop offset=".5" stop-color="#F3C7A0"/><stop offset="1" stop-color="#F9DD9B"/></linearGradient>
+      <linearGradient id="g-parch" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5C57C"/><stop offset="1" stop-color="#E29A55"/></linearGradient>
+      <linearGradient id="g-card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4FB5F0"/><stop offset="1" stop-color="#8ED6F7"/></linearGradient>
+      <linearGradient id="g-sail" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D9302A"/><stop offset="1" stop-color="#F4523E"/></linearGradient>
+      <radialGradient id="g-bubble" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"/><stop offset=".7" stop-color="#E4F5FF" stop-opacity=".85"/><stop offset="1" stop-color="#BFE6FA" stop-opacity=".9"/></radialGradient>
+      <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+      <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .10"/></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="multiply"/></filter>
+      <filter id="paper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="4" seed="9"/><feColorMatrix values="0 0 0 0 .55  0 0 0 0 .32  0 0 0 0 .12  0 0 0 .22 0"/><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="multiply"/></filter>
+      <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+      <filter id="blur14"><feGaussianBlur stdDeviation="14"/></filter>
+      <radialGradient id="g-sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF7D6"/><stop offset=".35" stop-color="#FFE9A8" stop-opacity=".9"/><stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/></radialGradient>
+      <radialGradient id="g-glow" cx=".5" cy="0" r=".9"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".75"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+      <linearGradient id="g-ray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".55"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+      <linearGradient id="g-deep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FD6F2"/><stop offset=".45" stop-color="#3FA8DE"/><stop offset="1" stop-color="#2A7FC0"/></linearGradient>
+      <linearGradient id="g-sand2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8E1A6"/><stop offset="1" stop-color="#E4B866"/></linearGradient>
+      <linearGradient id="g-sand3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFCB7D"/><stop offset="1" stop-color="#D9A553"/></linearGradient>
+      <linearGradient id="g-sea2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7EE0E6"/><stop offset=".4" stop-color="#41BAD8"/><stop offset="1" stop-color="#2489BF"/></linearGradient>
+      <linearGradient id="g-hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A6DB7E"/><stop offset="1" stop-color="#6FB552"/></linearGradient>
+      <linearGradient id="g-parch2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBE3B4"/><stop offset=".55" stop-color="#F3C98A"/><stop offset="1" stop-color="#E6A962"/></linearGradient>
+      <linearGradient id="g-roll" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C77D3E"/><stop offset=".35" stop-color="#F6CD8D"/><stop offset=".6" stop-color="#EDB673"/><stop offset="1" stop-color="#B86E33"/></linearGradient>
+    </defs>
+
+    <!-- облак -->
+    <symbol id="cloud" viewBox="0 0 200 90"><g fill="#fff"><ellipse cx="60" cy="60" rx="52" ry="28"/><ellipse cx="110" cy="45" rx="60" ry="38"/><ellipse cx="160" cy="62" rx="38" ry="24"/></g></symbol>
+
+    <!-- замък -->
+    <symbol id="castle" viewBox="0 0 320 360">
+      <g fill="#A9C1EE"><rect x="60" y="150" width="200" height="200" rx="6"/><rect x="20" y="110" width="60" height="240"/><rect x="240" y="110" width="60" height="240"/><rect x="130" y="60" width="60" height="120"/></g>
+      <g fill="#8AA6E2"><rect x="80" y="170" width="160" height="180"/><rect x="30" y="130" width="40" height="220"/><rect x="250" y="130" width="40" height="220"/></g>
+      <g fill="#5C6FC2"><polygon points="20,110 50,40 80,110"/><polygon points="240,110 270,40 300,110"/><polygon points="130,60 160,0 190,60"/><polygon points="90,170 115,120 140,170"/><polygon points="180,170 205,120 230,170"/></g>
+      <g fill="#E63E6C"><polygon points="50,40 50,12 74,26"/><polygon points="270,40 270,12 294,26"/><polygon points="160,0 160,-24 186,-12"/></g>
+      <g fill="#3E4E9E"><rect x="140" y="260" width="40" height="90" rx="20"/><rect x="40" y="200" width="16" height="30" rx="8"/><rect x="264" y="200" width="16" height="30" rx="8"/><rect x="150" y="100" width="20" height="34" rx="10"/><rect x="100" y="210" width="16" height="28" rx="8"/><rect x="204" y="210" width="16" height="28" rx="8"/></g>
+    </symbol>
+
+    <!-- пиратски кораб -->
+    <symbol id="ship" viewBox="0 0 420 380">
+      <g stroke="#5A3416" stroke-width="8" stroke-linecap="round"><line x1="150" y1="60" x2="150" y2="300"/><line x1="290" y1="30" x2="290" y2="300"/><line x1="60" y1="120" x2="120" y2="90"/></g>
+      <g fill="url(#g-sail)"><path d="M158 70 q110 30 0 130 z"/><path d="M158 210 q90 20 0 80 z"/><path d="M298 40 q120 40 0 150 z"/><path d="M298 200 q100 25 0 90 z"/></g>
+      <g fill="#F26B4E" opacity=".55"><path d="M158 70 q60 40 0 130 z"/><path d="M298 40 q70 55 0 150 z"/></g>
+      <g fill="#E63E6C"><polygon points="150,60 150,30 190,45"/><polygon points="290,30 290,0 330,15"/></g>
+      <path d="M40 290 L400 290 L370 360 Q210 380 70 360 Z" fill="#8B4A1E"/>
+      <path d="M40 290 L400 290 L390 315 L52 315 Z" fill="#A65A26"/>
+      <path d="M60 335 L385 335 L378 348 L68 348 Z" fill="#6E3814"/>
+      <g fill="#F3D27A"><circle cx="120" cy="325" r="7"/><circle cx="200" cy="325" r="7"/><circle cx="280" cy="325" r="7"/><circle cx="350" cy="325" r="7"/></g>
+      <path d="M40 290 q-30 -10 -20 -60" fill="none" stroke="#8B4A1E" stroke-width="14" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- пиратска сцена (карта, настройки, резултат) -->
+    <symbol id="scene-pirate" viewBox="0 0 1600 1000">
+      <rect width="1600" height="1000" fill="url(#g-sky)"/>
+      <circle cx="1180" cy="140" r="260" fill="url(#g-sun)"/>
+      <g opacity=".95"><use href="#cloud" x="120" y="60" width="300" height="135"><animateTransform attributeName="transform" type="translate" values="0 0; 60 0; 0 0" dur="38s" repeatCount="indefinite"/></use></g>
+      <g><use href="#cloud" x="880" y="30" width="420" height="190" opacity=".95"><animateTransform attributeName="transform" type="translate" values="0 0; -70 0; 0 0" dur="46s" repeatCount="indefinite"/></use></g>
+      <use href="#cloud" x="1320" y="190" width="240" height="108" opacity=".75"><animateTransform attributeName="transform" type="translate" values="0 0; -40 6; 0 0" dur="30s" repeatCount="indefinite"/></use>
+      <use href="#cloud" x="520" y="160" width="200" height="90" opacity=".6"><animateTransform attributeName="transform" type="translate" values="0 0; 50 0; 0 0" dur="34s" repeatCount="indefinite"/></use>
+      <path d="M700 560 C820 500 900 520 980 560 Z" fill="#9CC9DD" opacity=".7"/>
+      <rect y="556" width="1600" height="444" fill="url(#g-sea2)"/>
+      <rect y="556" width="1600" height="6" fill="#fff" opacity=".55"/>
+      <g fill="none" stroke="#fff" stroke-linecap="round" opacity=".45" stroke-width="4">
+        <path d="M560 640 q30 -10 60 0 t60 0"><animateTransform attributeName="transform" type="translate" values="0 0; 30 0; 0 0" dur="6s" repeatCount="indefinite"/></path>
+        <path d="M900 700 q30 -10 60 0 t60 0 t60 0"><animateTransform attributeName="transform" type="translate" values="0 0; -30 0; 0 0" dur="7s" repeatCount="indefinite"/></path>
+        <path d="M700 800 q30 -10 60 0 t60 0"><animateTransform attributeName="transform" type="translate" values="0 0; 24 0; 0 0" dur="5s" repeatCount="indefinite"/></path>
+        <path d="M1150 880 q30 -10 60 0 t60 0"><animateTransform attributeName="transform" type="translate" values="0 0; -20 0; 0 0" dur="6.5s" repeatCount="indefinite"/></path>
+      </g>
+      <path d="M0 560 C120 470 300 480 420 520 C520 560 620 600 700 640 L0 640 Z" fill="url(#g-hill)"/>
+      <path d="M0 540 C80 500 160 500 220 520 L220 560 L0 560 Z" fill="#8BCB63" opacity=".8"/>
+      <path d="M0 612 C200 552 420 592 620 652 C760 692 900 752 1000 812 L1000 1000 L0 1000 Z" fill="#FFFFFF" opacity=".5"/>
+      <path d="M0 620 C200 560 420 600 620 660 C760 700 900 760 1000 820 L1000 1000 L0 1000 Z" fill="url(#g-sand2)" filter="url(#grain)"/>
+      <path d="M0 740 C180 700 360 730 520 780 C640 816 720 870 760 1000 L0 1000 Z" fill="url(#g-sand3)" opacity=".7"/>
+      <use href="#castle" x="0" y="220" width="330" height="370"/>
+      <ellipse cx="1440" cy="775" rx="190" ry="16" fill="#1C6E9E" opacity=".35"/>
+      <g><use href="#ship" x="1250" y="420" width="380" height="345"/><animateTransform attributeName="transform" type="rotate" values="-1.2 1440 760; 1.2 1440 760; -1.2 1440 760" dur="5s" repeatCount="indefinite"/></g>
+      <g fill="#C9884F"><polygon points="1090,930 1130,860 1180,940"/><polygon points="1160,960 1200,900 1250,970"/><polygon points="80,900 110,860 140,905"/></g>
+      <g fill="#A96A3C"><polygon points="1100,930 1130,875 1150,935"/><polygon points="1500,860 1530,820 1560,865"/><polygon points="1180,955 1200,915 1210,960"/></g>
+      <g fill="#fff" opacity=".4"><ellipse cx="1140" cy="945" rx="80" ry="8"/><ellipse cx="1530" cy="870" rx="60" ry="6"/></g>
+      <g fill="#fff" opacity=".9"><path d="M300 180 q10 -8 20 0 q10 -8 20 0" fill="none" stroke="#3E4E6E" stroke-width="3" stroke-linecap="round"><animateTransform attributeName="transform" type="translate" values="0 0; 120 -20; 240 0" dur="18s" repeatCount="indefinite"/></path><path d="M360 210 q8 -6 16 0 q8 -6 16 0" fill="none" stroke="#3E4E6E" stroke-width="3" stroke-linecap="round"><animateTransform attributeName="transform" type="translate" values="0 0; 110 -14; 220 4" dur="18s" repeatCount="indefinite"/></path></g>
+    </symbol>
+
+    <!-- залез (фон около играта) -->
+    <symbol id="scene-sunset" viewBox="0 0 1600 1000">
+      <rect width="1600" height="1000" fill="url(#g-sunset)"/>
+      <use href="#cloud" x="60" y="80" width="360" height="160" opacity=".5"/>
+      <use href="#cloud" x="1100" y="120" width="400" height="180" opacity=".45"/>
+      <rect y="820" width="1600" height="180" fill="#5DC3DA"/>
+      <path d="M0 860 C300 800 600 880 900 850 C1150 830 1400 900 1600 860 L1600 1000 L0 1000 Z" fill="#F0CE7D"/>
+      <use href="#ship" x="1320" y="600" width="300" height="270" opacity=".9"/>
+    </symbol>
+
+    <!-- подводна сцена (вътре в рамката) -->
+    <symbol id="scene-underwater" viewBox="0 0 1200 760">
+      <rect width="1200" height="760" fill="url(#g-deep)"/>
+      <ellipse cx="600" cy="0" rx="700" ry="260" fill="url(#g-glow)"/>
+      <g fill="url(#g-ray)">
+        <polygon points="470,0 560,0 470,700 300,700"><animate attributeName="opacity" values=".55;.9;.55" dur="6s" repeatCount="indefinite"/></polygon>
+        <polygon points="600,0 660,0 780,700 640,700"><animate attributeName="opacity" values=".8;.4;.8" dur="7s" repeatCount="indefinite"/></polygon>
+        <polygon points="700,0 740,0 950,700 860,700"><animate attributeName="opacity" values=".5;.85;.5" dur="5s" repeatCount="indefinite"/></polygon>
+        <polygon points="380,0 410,0 190,700 110,700"><animate attributeName="opacity" values=".6;.3;.6" dur="8s" repeatCount="indefinite"/></polygon>
+      </g>
+      <g fill="#2B78B3" opacity=".45">
+        <g><path d="M0 0 l26 -11 l-7 11 l7 11 z" transform="translate(150 300)"/><path d="M0 0 l26 -11 l-7 11 l7 11 z" transform="translate(190 322)"/><path d="M0 0 l26 -11 l-7 11 l7 11 z" transform="translate(140 350)"/><path d="M0 0 l26 -11 l-7 11 l7 11 z" transform="translate(205 290)"/><animateTransform attributeName="transform" type="translate" values="0 0; 80 -12; 0 0" dur="20s" repeatCount="indefinite"/></g>
+        <g><path d="M0 0 l-26 -11 l7 11 l-7 11 z" transform="translate(1020 250)"/><path d="M0 0 l-26 -11 l7 11 l-7 11 z" transform="translate(1060 276)"/><path d="M0 0 l-26 -11 l7 11 l-7 11 z" transform="translate(1000 300)"/><animateTransform attributeName="transform" type="translate" values="0 0; -90 10; 0 0" dur="24s" repeatCount="indefinite"/></g>
+      </g>
+      <g fill="#fff" opacity=".55">
+        <circle cx="120" cy="700" r="6"><animate attributeName="cy" values="720;-20" dur="9s" repeatCount="indefinite"/></circle>
+        <circle cx="140" cy="700" r="3.5"><animate attributeName="cy" values="720;-20" dur="7s" begin="2s" repeatCount="indefinite"/></circle>
+        <circle cx="1080" cy="700" r="5"><animate attributeName="cy" values="720;-20" dur="10s" begin="1s" repeatCount="indefinite"/></circle>
+        <circle cx="1100" cy="700" r="3"><animate attributeName="cy" values="720;-20" dur="8s" begin="4s" repeatCount="indefinite"/></circle>
+        <circle cx="620" cy="700" r="4"><animate attributeName="cy" values="720;-20" dur="11s" begin="3s" repeatCount="indefinite"/></circle>
+        <circle cx="880" cy="700" r="3"><animate attributeName="cy" values="720;-20" dur="9.5s" begin="5s" repeatCount="indefinite"/></circle>
+      </g>
+      <path d="M0 520 C200 470 380 530 560 510 C760 490 900 550 1200 505 L1200 760 L0 760 Z" fill="#8FCBE0" opacity=".6"/>
+      <path d="M0 560 C200 500 380 560 560 540 C760 520 900 580 1200 540 L1200 760 L0 760 Z" fill="url(#g-sand2)" filter="url(#grain)"/>
+      <path d="M0 640 C220 600 420 660 640 620 C860 580 1000 660 1200 620 L1200 760 L0 760 Z" fill="url(#g-sand3)" filter="url(#grain)"/>
+      <g fill="#fff" opacity=".35"><ellipse cx="600" cy="600" rx="120" ry="8"/><ellipse cx="300" cy="690" rx="90" ry="6"/><ellipse cx="950" cy="680" rx="100" ry="7"/></g>
+      <g><image href="assets/img/seaweed_green_a.png" x="60" y="340" width="150" height="240"/><animateTransform attributeName="transform" type="skewX" values="-3;3;-3" dur="4.5s" begin="0s" repeatCount="indefinite" additive="sum"/></g>
+      <g><image href="assets/img/seaweed_pink_a.png" x="170" y="420" width="110" height="170"/><animateTransform attributeName="transform" type="skewX" values="-3;3;-3" dur="5.5s" begin="1s" repeatCount="indefinite" additive="sum"/></g>
+      <g><image href="assets/img/seaweed_green_c.png" x="980" y="340" width="150" height="240"/><animateTransform attributeName="transform" type="skewX" values="-3;3;-3" dur="5s" begin="0.5s" repeatCount="indefinite" additive="sum"/></g>
+      <g><image href="assets/img/seaweed_orange_a.png" x="1080" y="430" width="110" height="160"/><animateTransform attributeName="transform" type="skewX" values="-3;3;-3" dur="4s" begin="1.5s" repeatCount="indefinite" additive="sum"/></g>
+      <g><image href="assets/img/seaweed_pink_c.png" x="820" y="470" width="90" height="130"/><animateTransform attributeName="transform" type="skewX" values="-3;3;-3" dur="6s" begin="0.8s" repeatCount="indefinite" additive="sum"/></g>
+      <image href="assets/img/rock_a.png" x="480" y="560" width="170" height="110"/>
+      <image href="assets/img/rock_b.png" x="230" y="610" width="120" height="80"/>
+      <g fill="#F26D8F"><path d="M300 690 l16 -34 l16 34 l36 8 l-28 24 l8 36 l-32 -18 l-32 18 l8 -36 l-28 -24 z"/></g>
+      <g fill="#FFFFFF" opacity=".35"><path d="M316 664 l6 12 l-12 0 z"/></g>
+      <g fill="#8E6BE0"><circle cx="760" cy="660" r="26"/><circle cx="795" cy="672" r="18"/><circle cx="740" cy="678" r="14"/></g>
+      <g fill="#B79CF0" opacity=".7"><circle cx="752" cy="650" r="8"/><circle cx="790" cy="664" r="5"/></g>
+      <g fill="#F4A26B"><path d="M920 700 a26 26 0 1 1 52 0 l-8 26 l-36 0 z"/></g>
+    </symbol>
+
+    <!-- мини сцени за картите на модулите -->
+    <symbol id="scene-math-mini" viewBox="0 0 520 240">
+      <rect width="520" height="240" fill="#7ED8E8"/>
+      <use href="#cloud" x="200" y="40" width="160" height="72" opacity=".9"/>
+      <rect y="150" width="520" height="90" fill="#4EB8D6"/>
+      <path d="M0 175 C120 150 220 200 320 190 L320 240 L0 240 Z" fill="#F2D68F"/>
+      <path d="M0 140 C60 110 110 120 150 150 L150 170 L0 170 Z" fill="#8FCB6E"/>
+      <use href="#castle" x="10" y="60" width="110" height="130"/>
+      <use href="#ship" x="330" y="50" width="190" height="175"/>
+    </symbol>
+    <symbol id="scene-world-mini" viewBox="0 0 520 240">
+      <rect width="520" height="240" fill="#8FE1D6"/>
+      <path d="M0 170 C150 140 300 190 520 160 L520 240 L0 240 Z" fill="#6BBE55"/>
+      <path d="M0 210 C150 190 300 220 520 200 L520 240 L0 240 Z" fill="#4E9E42"/>
+      <g fill="#6F6A80"><polygon points="350,200 400,90 450,200"/><rect x="330" y="140" width="140" height="14" opacity=".6"/><rect x="345" y="110" width="110" height="12" opacity=".6"/></g>
+      <g fill="#59536B"><rect x="235" y="120" width="48" height="90" rx="12"/><rect x="243" y="140" width="10" height="8"/><rect x="266" y="140" width="10" height="8"/></g>
+      <g fill="#7B4A21"><rect x="60" y="100" width="12" height="110"/><rect x="150" y="120" width="10" height="90"/><rect x="480" y="110" width="10" height="100"/></g>
+      <g fill="#4FB04A"><ellipse cx="66" cy="100" rx="48" ry="16"/><ellipse cx="155" cy="120" rx="40" ry="14"/><ellipse cx="485" cy="110" rx="42" ry="14"/></g>
+      <g fill="#2E8F3B"><ellipse cx="66" cy="96" rx="30" ry="9"/><ellipse cx="155" cy="116" rx="26" ry="8"/><ellipse cx="485" cy="106" rx="26" ry="8"/></g>
+    </symbol>
+    <symbol id="scene-village-mini" viewBox="0 0 520 240">
+      <rect width="520" height="240" fill="#BFEAF7"/>
+      <circle cx="380" cy="120" r="60" fill="#fff" opacity=".8"/>
+      <path d="M0 150 C160 130 320 170 520 140 L520 240 L0 240 Z" fill="#8FCB6E"/>
+      <path d="M0 200 C120 180 240 210 360 190 C440 176 500 190 520 200 L520 240 L0 240 Z" fill="#6DB553"/>
+      <path d="M200 240 C230 200 300 190 340 160 C360 150 380 160 400 150" fill="none" stroke="#C99A5C" stroke-width="22" stroke-linecap="round"/>
+      <g fill="#F2C14E"><path d="M40 190 a35 35 0 0 1 70 0 z"/><rect x="40" y="190" width="70" height="30"/></g>
+      <g fill="#E9573F"><polygon points="140,150 190,110 240,150"/></g><rect x="150" y="150" width="80" height="50" fill="#F7E7C6"/>
+      <g fill="#E9573F"><polygon points="420,150 460,120 500,150"/></g><rect x="428" y="150" width="64" height="44" fill="#F7E7C6"/>
+      <g fill="#4A6FE0"><rect x="165" y="165" width="14" height="16"/><rect x="200" y="165" width="14" height="16"/><rect x="450" y="162" width="12" height="14"/></g>
+      <g fill="#2E8F3B"><polygon points="20,150 40,100 60,150"/><polygon points="50,155 72,95 94,155"/><polygon points="480,140 500,100 520,140"/></g>
+    </symbol>
+    <symbol id="scene-space-mini" viewBox="0 0 520 240">
+      <rect width="520" height="240" fill="#3B62D8"/>
+      <g fill="#fff" opacity=".8"><circle cx="40" cy="30" r="2"/><circle cx="120" cy="80" r="2"/><circle cx="300" cy="24" r="2"/><circle cx="470" cy="60" r="2"/><circle cx="220" cy="140" r="1.5"/><circle cx="380" cy="200" r="2"/></g>
+      <circle cx="70" cy="140" r="52" fill="#E9573F"/><ellipse cx="60" cy="130" rx="30" ry="18" fill="#F58B6E" opacity=".7"/>
+      <circle cx="440" cy="170" r="80" fill="#2C48BF"/><circle cx="420" cy="150" r="20" fill="#4F73E8"/><circle cx="470" cy="200" r="12" fill="#4F73E8"/>
+      <circle cx="270" cy="200" r="34" fill="#8E8A9A"/><circle cx="258" cy="190" r="8" fill="#6C6878"/>
+      <g transform="rotate(-20 300 100)"><path d="M250 110 L330 90 L360 100 L330 112 Z" fill="#DCE6F5"/><path d="M330 90 L360 100 L330 112 Z" fill="#9FB3D6"/><rect x="300" y="94" width="18" height="10" rx="5" fill="#4F73E8"/><path d="M250 110 l-30 -6 l4 20 z" fill="#B7C6E6"/></g>
+      <g fill="#8E4A2E"><polygon points="150,200 170,185 185,205 165,215"/><polygon points="120,220 135,205 150,225"/></g>
+    </symbol>
+
+    <!-- свитък / пергамент -->
+        <!-- Палуба на кораба (сцена за Умни везни) -->
+    <symbol id="scene-deck" viewBox="0 0 1200 760">
+      <defs>
+        <linearGradient id="g-sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7CCBEE"/><stop offset="1" stop-color="#D6F0FA"/></linearGradient>
+        <linearGradient id="g-sea3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FB9D6"/><stop offset="1" stop-color="#7FE0DE"/></linearGradient>
+        <linearGradient id="g-plank" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C79A64"/><stop offset=".5" stop-color="#B98A55"/><stop offset="1" stop-color="#A67746"/></linearGradient>
+        <linearGradient id="g-plank2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B58553"/><stop offset="1" stop-color="#9C6D3F"/></linearGradient>
+        <linearGradient id="g-post" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#B98A55"/><stop offset=".5" stop-color="#E2BE8C"/><stop offset="1" stop-color="#A57343"/></linearGradient>
+        <linearGradient id="g-crate" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8C48F"/><stop offset="1" stop-color="#C79A64"/></linearGradient>
+        <linearGradient id="g-tray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9B98A"/><stop offset="1" stop-color="#B8925E"/></linearGradient>
+      </defs>
+      <rect width="1200" height="760" fill="url(#g-sky2)"/>
+      <g fill="#fff" opacity=".9"><ellipse cx="200" cy="120" rx="90" ry="30"/><ellipse cx="250" cy="100" rx="70" ry="36"/><ellipse cx="300" cy="125" rx="80" ry="26"/><ellipse cx="900" cy="90" rx="100" ry="30"/><ellipse cx="960" cy="70" rx="70" ry="34"/><ellipse cx="1010" cy="95" rx="80" ry="26"/><ellipse cx="620" cy="170" rx="60" ry="18"/></g>
+      <rect y="300" width="1200" height="180" fill="url(#g-sea3)"/>
+      <g fill="#fff" opacity=".35"><ellipse cx="300" cy="360" rx="120" ry="6"/><ellipse cx="800" cy="400" rx="160" ry="7"/><ellipse cx="1050" cy="340" rx="90" ry="5"/></g>
+      <rect y="300" width="1200" height="4" fill="#fff" opacity=".6"/>
+      <rect x="0" y="288" width="1200" height="22" rx="6" fill="url(#g-plank)"/>
+      <rect x="0" y="420" width="1200" height="16" rx="5" fill="url(#g-plank2)"/>
+      <g fill="url(#g-post)"><rect x="70" y="300" width="22" height="150"/><rect x="230" y="300" width="22" height="150"/><rect x="390" y="300" width="22" height="150"/><rect x="550" y="300" width="22" height="150"/><rect x="710" y="300" width="22" height="150"/><rect x="870" y="300" width="22" height="150"/><rect x="1030" y="300" width="22" height="150"/><rect x="1150" y="300" width="22" height="150"/></g>
+      <rect y="450" width="1200" height="310" fill="url(#g-plank)"/>
+      <g stroke="#8E6438" stroke-width="3" opacity=".7"><line x1="0" y1="510" x2="1200" y2="510"/><line x1="0" y1="580" x2="1200" y2="580"/><line x1="0" y1="650" x2="1200" y2="650"/><line x1="0" y1="720" x2="1200" y2="720"/></g>
+      <g stroke="#8E6438" stroke-width="2" opacity=".5"><line x1="300" y1="450" x2="300" y2="510"/><line x1="900" y1="450" x2="900" y2="510"/><line x1="120" y1="510" x2="120" y2="580"/><line x1="600" y1="510" x2="600" y2="580"/><line x1="1080" y1="510" x2="1080" y2="580"/><line x1="420" y1="580" x2="420" y2="650"/><line x1="820" y1="580" x2="820" y2="650"/></g>
+      <g fill="#7A5230" opacity=".5"><circle cx="150" cy="480" r="3"/><circle cx="450" cy="545" r="3"/><circle cx="760" cy="545" r="3"/><circle cx="1000" cy="615" r="3"/><circle cx="250" cy="690" r="3"/></g>
+      <path d="M300 640 L900 640 L860 560 L340 560 Z" fill="url(#g-tray)"/>
+      <path d="M340 560 L860 560 L830 500 L370 500 Z" fill="#CBA875"/>
+      <path d="M300 640 L900 640 L900 660 L300 660 Z" fill="#8E6438"/>
+      <rect x="360" y="655" width="480" height="105" rx="8" fill="url(#g-crate)"/>
+      <g stroke="#9C6D3F" stroke-width="3" opacity=".6"><line x1="360" y1="690" x2="840" y2="690"/><line x1="360" y1="725" x2="840" y2="725"/></g>
+      <rect x="352" y="648" width="496" height="14" rx="6" fill="#D9B27E"/>
+    </symbol>
+    <!-- бронзова везна: основа, стълб и орнамент; гредата и блюдата са в самата игра, за да се движат -->
+    <symbol id="balance" viewBox="0 0 800 520">
+      <defs>
+        <linearGradient id="g-bronze" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6B4A22"/><stop offset=".35" stop-color="#C9A25A"/><stop offset=".55" stop-color="#E9CB84"/><stop offset=".8" stop-color="#B8893F"/><stop offset="1" stop-color="#5E4620"/></linearGradient>
+        <linearGradient id="g-bronze-v" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9CB84"/><stop offset=".5" stop-color="#B8893F"/><stop offset="1" stop-color="#6B4A22"/></linearGradient>
+        <radialGradient id="g-pan" cx=".5" cy=".35" r=".7"><stop offset="0" stop-color="#9F7A3A"/><stop offset=".6" stop-color="#6E4F23"/><stop offset="1" stop-color="#4A3316"/></radialGradient>
+        <linearGradient id="g-teal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2E8C7E"/><stop offset=".5" stop-color="#6FD3C2"/><stop offset="1" stop-color="#2E8C7E"/></linearGradient>
+      </defs>
+      <ellipse cx="400" cy="505" rx="120" ry="14" fill="#000" opacity=".2"/>
+      <ellipse cx="400" cy="496" rx="96" ry="18" fill="url(#g-bronze-v)"/>
+      <ellipse cx="400" cy="484" rx="72" ry="12" fill="url(#g-teal)"/>
+      <ellipse cx="400" cy="474" rx="50" ry="10" fill="url(#g-bronze-v)"/>
+      <path d="M382 470 C378 380 372 300 388 220 L412 220 C428 300 422 380 418 470 Z" fill="url(#g-bronze)"/>
+      <path d="M384 330 h32 v14 h-32 z" fill="url(#g-teal)"/>
+      <path d="M372 222 C360 200 380 170 400 160 C420 170 440 200 428 222 Z" fill="url(#g-bronze)"/>
+      <path d="M372 222 h56 v10 h-56 z" fill="url(#g-teal)"/>
+      <polygon points="400,70 430,110 400,150 370,110" fill="none" stroke="url(#g-bronze-v)" stroke-width="12" stroke-linejoin="round"/>
+      <polygon points="400,92 416,110 400,128 384,110" fill="url(#g-bronze-v)"/>
+      <circle cx="400" cy="160" r="12" fill="#5E4620"/>
+    </symbol>
+    <!-- ===== Сцени по игри (v0.6) ===== -->
+    <symbol id="scene-cabin" viewBox="0 0 1200 760">
+      <defs>
+        <linearGradient id="g-cab-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A5A34"/><stop offset="1" stop-color="#5E3A1E"/></linearGradient>
+        <linearGradient id="g-cab-floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A97448"/><stop offset="1" stop-color="#7A4E2A"/></linearGradient>
+        <radialGradient id="g-lamp" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFE9A8" stop-opacity=".9"/><stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/></radialGradient>
+        <linearGradient id="g-window" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ED4F4"/><stop offset=".6" stop-color="#3FA8DE"/><stop offset="1" stop-color="#2489BF"/></linearGradient>
+      </defs>
+      <rect width="1200" height="760" fill="url(#g-cab-wall)"/>
+      <g stroke="#4A2C14" stroke-width="3" opacity=".6"><line x1="0" y1="90" x2="1200" y2="90"/><line x1="0" y1="180" x2="1200" y2="180"/><line x1="0" y1="270" x2="1200" y2="270"/><line x1="0" y1="360" x2="1200" y2="360"/><line x1="0" y1="450" x2="1200" y2="450"/></g>
+      <g><circle cx="600" cy="250" r="150" fill="#3E2716"/><circle cx="600" cy="250" r="128" fill="url(#g-window)"/><g fill="#fff" opacity=".8"><ellipse cx="560" cy="200" rx="34" ry="12"/><ellipse cx="650" cy="230" rx="28" ry="10"/></g><path d="M472 300 Q600 280 728 300 L728 378 L472 378 Z" fill="#2489BF" opacity=".9"/><circle cx="600" cy="250" r="128" fill="none" stroke="#B98A55" stroke-width="16"/><circle cx="600" cy="250" r="128" fill="none" stroke="#6B4423" stroke-width="4"/><g fill="#E9CB84"><circle cx="600" cy="110" r="7"/><circle cx="600" cy="390" r="7"/><circle cx="460" cy="250" r="7"/><circle cx="740" cy="250" r="7"/></g></g>
+      <rect y="520" width="1200" height="240" fill="url(#g-cab-floor)"/>
+      <g stroke="#5E3A1E" stroke-width="3" opacity=".7"><line x1="0" y1="580" x2="1200" y2="580"/><line x1="0" y1="640" x2="1200" y2="640"/><line x1="0" y1="700" x2="1200" y2="700"/></g>
+      <g><circle cx="150" cy="150" r="160" fill="url(#g-lamp)"/><rect x="138" y="60" width="24" height="60" rx="6" fill="#5E4620"/><path d="M118 120 h64 l10 60 h-84 z" fill="#E9CB84"/><rect x="128" y="180" width="44" height="30" rx="4" fill="#F5E4B0"/><animate attributeName="opacity" values="1;.92;1" dur="3s" repeatCount="indefinite"/></g>
+      <g><circle cx="1050" cy="150" r="160" fill="url(#g-lamp)"/><rect x="1038" y="60" width="24" height="60" rx="6" fill="#5E4620"/><path d="M1018 120 h64 l10 60 h-84 z" fill="#E9CB84"/><rect x="1028" y="180" width="44" height="30" rx="4" fill="#F5E4B0"/></g>
+      <g><rect x="60" y="400" width="180" height="120" rx="8" fill="#7A4E2A"/><rect x="60" y="400" width="180" height="16" rx="6" fill="#A97448"/><rect x="140" y="440" width="20" height="20" rx="3" fill="#E9CB84"/><rect x="960" y="400" width="180" height="120" rx="8" fill="#7A4E2A"/><rect x="960" y="400" width="180" height="16" rx="6" fill="#A97448"/><rect x="1040" y="440" width="20" height="20" rx="3" fill="#E9CB84"/></g>
+      <g fill="#F2C14E"><circle cx="900" cy="500" r="10"/><circle cx="925" cy="508" r="8"/><circle cx="880" cy="512" r="7"/></g>
+    </symbol>
+
+    <symbol id="scene-island" viewBox="0 0 1200 760">
+      <defs>
+        <linearGradient id="g-isl-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5FBDF0"/><stop offset="1" stop-color="#D8F1FB"/></linearGradient>
+        <linearGradient id="g-isl-sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2FA9D6"/><stop offset="1" stop-color="#7FE0DE"/></linearGradient>
+        <linearGradient id="g-isl-sand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8E4AE"/><stop offset="1" stop-color="#E3B96A"/></linearGradient>
+      </defs>
+      <rect width="1200" height="760" fill="url(#g-isl-sky)"/>
+      <circle cx="960" cy="120" r="70" fill="#FFF3B0"/><circle cx="960" cy="120" r="110" fill="#FFF3B0" opacity=".25"/>
+      <use href="#cloud" x="80" y="60" width="260" height="117" opacity=".95"><animateTransform attributeName="transform" type="translate" values="0 0;40 0;0 0" dur="30s" repeatCount="indefinite"/></use>
+      <use href="#cloud" x="640" y="40" width="220" height="99" opacity=".8"><animateTransform attributeName="transform" type="translate" values="0 0;-50 0;0 0" dur="36s" repeatCount="indefinite"/></use>
+      <rect y="330" width="1200" height="430" fill="url(#g-isl-sea)"/>
+      <g fill="#fff" opacity=".4"><ellipse cx="200" cy="380" rx="120" ry="6"><animate attributeName="rx" values="120;150;120" dur="5s" repeatCount="indefinite"/></ellipse><ellipse cx="900" cy="420" rx="160" ry="7"><animate attributeName="rx" values="160;120;160" dur="6s" repeatCount="indefinite"/></ellipse></g>
+      <use href="#ship" x="60" y="210" width="220" height="200" opacity=".9"><animateTransform attributeName="transform" type="rotate" values="-1.5 170 400;1.5 170 400;-1.5 170 400" dur="5s" repeatCount="indefinite"/></use>
+      <path d="M0 560 C200 480 400 520 600 500 C800 480 1000 520 1200 480 L1200 760 L0 760 Z" fill="#FFFFFF" opacity=".5"/>
+      <path d="M0 570 C200 490 400 530 600 510 C800 490 1000 530 1200 490 L1200 760 L0 760 Z" fill="url(#g-isl-sand)" filter="url(#grain)"/>
+      <g><rect x="1010" y="360" width="16" height="200" rx="6" fill="#8B4A1E" transform="rotate(-6 1018 460)"/><g fill="#4FB04A"><ellipse cx="985" cy="352" rx="70" ry="18" transform="rotate(-30 985 352)"/><ellipse cx="1055" cy="352" rx="70" ry="18" transform="rotate(25 1055 352)"/><ellipse cx="1000" cy="330" rx="18" ry="60" transform="rotate(-10 1000 330)"/><ellipse cx="1040" cy="330" rx="18" ry="60" transform="rotate(12 1040 330)"/></g><g fill="#2E8F3B"><ellipse cx="1020" cy="345" rx="60" ry="14"/></g><g fill="#8B4A1E"><circle cx="1010" cy="370" r="9"/><circle cx="1030" cy="372" r="9"/></g></g>
+      <g><rect x="140" y="420" width="14" height="160" rx="6" fill="#8B4A1E" transform="rotate(8 147 500)"/><g fill="#4FB04A"><ellipse cx="120" cy="415" rx="56" ry="14" transform="rotate(-25 120 415)"/><ellipse cx="180" cy="415" rx="56" ry="14" transform="rotate(20 180 415)"/><ellipse cx="150" cy="395" rx="14" ry="48"/></g></g>
+      <g fill="#C9884F"><polygon points="700,600 760,540 820,610"/><polygon points="760,620 800,580 840,625"/></g><g fill="#A96A3C"><polygon points="710,600 760,555 780,605"/></g>
+      <g fill="#F26D8F"><path d="M420 660 l10 -22 l10 22 l24 5 l-18 16 l5 24 l-21 -12 l-21 12 l5 -24 l-18 -16 z"/></g>
+      <g fill="#F4A26B"><path d="M560 690 a18 18 0 1 1 36 0 l-6 18 l-24 0 z"/></g>
+    </symbol>
+
+    <symbol id="scene-treasure" viewBox="0 0 1200 760">
+      <defs>
+        <linearGradient id="g-cave" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B1B3D"/><stop offset="1" stop-color="#4A2C5A"/></linearGradient>
+        <radialGradient id="g-gold-glow" cx=".5" cy=".7" r=".6"><stop offset="0" stop-color="#FFD76A" stop-opacity=".55"/><stop offset="1" stop-color="#FFD76A" stop-opacity="0"/></radialGradient>
+        <linearGradient id="g-rock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A5E8C"/><stop offset="1" stop-color="#4A3560"/></linearGradient>
+        <linearGradient id="g-cave-floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6B4E7C"/><stop offset="1" stop-color="#3E2A50"/></linearGradient>
+      </defs>
+      <rect width="1200" height="760" fill="url(#g-cave)"/>
+      <g fill="url(#g-rock)"><path d="M0 0 L0 300 C60 240 120 260 160 180 C200 100 120 60 200 0 Z"/><path d="M1200 0 L1200 320 C1140 260 1080 280 1040 200 C1000 120 1080 60 1000 0 Z"/><path d="M300 0 C340 80 300 120 360 160 C420 200 380 260 440 300 L500 0 Z" opacity=".8"/><path d="M760 0 C720 90 780 140 720 180 C660 220 700 280 640 320 L600 0 Z" opacity=".8"/></g>
+      <g fill="#8E74A6" opacity=".6"><polygon points="330,0 350,120 380,0"/><polygon points="820,0 850,150 890,0"/><polygon points="120,0 130,90 160,0"/></g>
+      <ellipse cx="600" cy="620" rx="520" ry="220" fill="url(#g-gold-glow)"><animate attributeName="opacity" values="1;.7;1" dur="4s" repeatCount="indefinite"/></ellipse>
+      <rect y="560" width="1200" height="200" fill="url(#g-cave-floor)"/>
+      <g fill="#F2C14E"><circle cx="240" cy="640" r="12"/><circle cx="270" cy="652" r="10"/><circle cx="220" cy="662" r="9"/><circle cx="960" cy="650" r="12"/><circle cx="990" cy="640" r="9"/><circle cx="930" cy="664" r="10"/><circle cx="600" cy="700" r="8"/><circle cx="640" cy="712" r="7"/></g>
+      <g fill="#FFE9A8" opacity=".9"><circle cx="246" cy="634" r="4"/><circle cx="966" cy="644" r="4"/></g>
+      <g><rect x="440" y="580" width="140" height="90" rx="8" fill="#8B4A1E"/><path d="M440 600 a70 30 0 0 1 140 0 v-10 a70 30 0 0 0 -140 0 z" fill="#A65A26"/><rect x="440" y="580" width="140" height="22" rx="8" fill="#A65A26"/><rect x="500" y="594" width="20" height="20" rx="3" fill="#F2C14E"/><g fill="#F5D76E"><circle cx="470" cy="578" r="7"/><circle cx="510" cy="572" r="8"/><circle cx="550" cy="578" r="7"/></g></g>
+      <g fill="#5FC8F0" opacity=".9"><polygon points="1080,620 1100,560 1120,620"/><polygon points="1110,630 1125,585 1140,630"/></g>
+      <g fill="#F26D8F" opacity=".9"><polygon points="90,610 105,560 120,610"/><polygon points="120,625 130,590 140,625"/></g>
+    </symbol>
+
+    <symbol id="scene-night" viewBox="0 0 1200 760">
+      <defs>
+        <linearGradient id="g-night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2A5E"/><stop offset=".6" stop-color="#3E4F9E"/><stop offset="1" stop-color="#6A78C4"/></linearGradient>
+        <linearGradient id="g-night-sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F4A9A"/><stop offset="1" stop-color="#1A2C63"/></linearGradient>
+      </defs>
+      <rect width="1200" height="760" fill="url(#g-night)"/>
+      <g fill="#fff"><circle cx="100" cy="80" r="2.5"><animate attributeName="opacity" values="1;.3;1" dur="2.5s" repeatCount="indefinite"/></circle><circle cx="300" cy="140" r="2"/><circle cx="520" cy="60" r="2.5"><animate attributeName="opacity" values=".4;1;.4" dur="3s" repeatCount="indefinite"/></circle><circle cx="760" cy="120" r="2"/><circle cx="980" cy="70" r="2.5"><animate attributeName="opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/></circle><circle cx="1120" cy="180" r="2"/><circle cx="200" cy="230" r="1.5"/><circle cx="880" cy="230" r="1.5"/><circle cx="640" cy="200" r="1.5"/><circle cx="420" cy="260" r="2"/></g>
+      <circle cx="960" cy="140" r="64" fill="#FFF3C4"/><circle cx="985" cy="120" r="56" fill="url(#g-night)"/>
+      <rect y="470" width="1200" height="290" fill="url(#g-night-sea)"/>
+      <path d="M860 470 L1060 470 L1000 760 L920 760 Z" fill="#FFF3C4" opacity=".12"/>
+      <g fill="#fff" opacity=".35"><ellipse cx="300" cy="520" rx="100" ry="5"><animate attributeName="rx" values="100;140;100" dur="5s" repeatCount="indefinite"/></ellipse><ellipse cx="700" cy="580" rx="140" ry="6"><animate attributeName="rx" values="140;100;140" dur="6s" repeatCount="indefinite"/></ellipse></g>
+      <use href="#ship" x="120" y="300" width="300" height="270" opacity=".95"><animateTransform attributeName="transform" type="rotate" values="-1.5 270 560;1.5 270 560;-1.5 270 560" dur="5.5s" repeatCount="indefinite"/></use>
+      <g><circle cx="270" cy="520" r="90" fill="#FFE9A8" opacity=".12"/></g>
+    </symbol>
+
+    <symbol id="scene-jungle" viewBox="0 0 1200 760">
+      <defs>
+        <linearGradient id="g-jsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FE0F5"/><stop offset="1" stop-color="#E4F7DA"/></linearGradient>
+        <linearGradient id="g-jgrass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FD86A"/><stop offset="1" stop-color="#4E9E42"/></linearGradient>
+        <linearGradient id="g-leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5FC957"/><stop offset="1" stop-color="#2E8F3B"/></linearGradient>
+      </defs>
+      <rect width="1200" height="760" fill="url(#g-jsky)"/>
+      <circle cx="600" cy="140" r="90" fill="#FFF3B0" opacity=".8"/>
+      <g fill="url(#g-leaf)"><ellipse cx="80" cy="120" rx="160" ry="60" transform="rotate(-35 80 120)"/><ellipse cx="40" cy="300" rx="180" ry="55" transform="rotate(-10 40 300)"/><ellipse cx="1120" cy="110" rx="160" ry="60" transform="rotate(35 1120 110)"/><ellipse cx="1160" cy="290" rx="180" ry="55" transform="rotate(10 1160 290)"/></g>
+      <g fill="#2E8F3B" opacity=".85"><ellipse cx="120" cy="60" rx="120" ry="40" transform="rotate(-50 120 60)"/><ellipse cx="1080" cy="50" rx="120" ry="40" transform="rotate(50 1080 50)"/></g>
+      <g stroke="#6B4423" stroke-width="10" stroke-linecap="round" fill="none"><path d="M300 0 C320 120 260 200 300 320"/><path d="M900 0 C880 120 940 200 900 320"/></g>
+      <g fill="#F26D8F"><circle cx="300" cy="330" r="16"/><circle cx="900" cy="330" r="16"/></g><g fill="#FFD34D"><circle cx="300" cy="330" r="6"/><circle cx="900" cy="330" r="6"/></g>
+      <path d="M0 480 C200 440 400 500 600 470 C800 440 1000 500 1200 460 L1200 760 L0 760 Z" fill="url(#g-jgrass)"/>
+      <path d="M0 560 C300 520 500 580 700 550 C900 520 1050 570 1200 540 L1200 760 L0 760 Z" fill="#3E8F3A" opacity=".7"/>
+      <g fill="#F5C542"><ellipse cx="200" cy="690" rx="120" ry="24"/><ellipse cx="1000" cy="700" rx="120" ry="24"/></g>
+      <g fill="#8B4A1E"><rect x="560" y="560" width="80" height="110" rx="10"/><rect x="556" y="556" width="88" height="20" rx="8" fill="#A65A26"/></g><g fill="#F2C14E"><circle cx="600" cy="620" r="9"/><rect x="590" y="580" width="20" height="14" rx="3"/></g>
+      <g fill="#F0A33A"><path d="M420 640 c-10 -30 30 -50 40 -20 c20 -10 40 20 10 40 z"/></g>
+      <g fill="#8E6BE0"><path d="M780 660 c-10 -30 30 -50 40 -20 c20 -10 40 20 10 40 z"/></g>
+    </symbol>
+
+    <symbol id="scene-crowsnest" viewBox="0 0 1200 760">
+      <defs>
+        <linearGradient id="g-cn-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4FB0EE"/><stop offset="1" stop-color="#C9EBFA"/></linearGradient>
+        <linearGradient id="g-cn-sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A9EC6"/><stop offset="1" stop-color="#6FD8E0"/></linearGradient>
+      </defs>
+      <rect width="1200" height="760" fill="url(#g-cn-sky)"/>
+      <use href="#cloud" x="40" y="120" width="300" height="135" opacity=".95"><animateTransform attributeName="transform" type="translate" values="0 0;60 0;0 0" dur="34s" repeatCount="indefinite"/></use>
+      <use href="#cloud" x="820" y="80" width="340" height="153" opacity=".9"><animateTransform attributeName="transform" type="translate" values="0 0;-60 0;0 0" dur="40s" repeatCount="indefinite"/></use>
+      <rect y="560" width="1200" height="200" fill="url(#g-cn-sea)"/>
+      <g fill="#fff" opacity=".4"><ellipse cx="260" cy="600" rx="120" ry="5"/><ellipse cx="900" cy="640" rx="150" ry="6"/></g>
+      <g fill="#8B4A1E"><rect x="585" y="0" width="30" height="760"/></g><g fill="#A65A26"><rect x="590" y="0" width="8" height="760" opacity=".7"/></g>
+      <g stroke="#3E2A12" stroke-width="5" fill="none"><line x1="600" y1="40" x2="120" y2="520"/><line x1="600" y1="40" x2="1080" y2="520"/><line x1="600" y1="40" x2="300" y2="760"/><line x1="600" y1="40" x2="900" y2="760"/></g>
+      <g stroke="#3E2A12" stroke-width="3" fill="none" opacity=".7"><line x1="360" y1="280" x2="840" y2="280"/><line x1="240" y1="400" x2="960" y2="400"/><line x1="420" y1="220" x2="780" y2="220"/></g>
+      <g fill="url(#g-sail)"><path d="M612 120 q260 40 0 300 z" opacity=".95"/><path d="M588 120 q-260 40 0 300 z" opacity=".95"/></g>
+      <g fill="#E63E6C"><polygon points="600,40 600,0 660,20"/></g>
+      <g fill="#fff"><path d="M980 300 q10 -8 20 0 q10 -8 20 0" fill="none" stroke="#2E4A6E" stroke-width="3" stroke-linecap="round"><animateTransform attributeName="transform" type="translate" values="0 0;-160 30;-320 0" dur="20s" repeatCount="indefinite"/></path></g>
+    </symbol>
+    <symbol id="scene-beach" viewBox="0 0 1200 760">
+      <defs><linearGradient id="g-bsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7B267"/><stop offset=".5" stop-color="#F4A0A6"/><stop offset="1" stop-color="#C9A7E8"/></linearGradient><linearGradient id="g-bsea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E8FD9"/><stop offset="1" stop-color="#8ED0E6"/></linearGradient><linearGradient id="g-bsand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F9E1AA"/><stop offset="1" stop-color="#E2B266"/></linearGradient></defs>
+      <rect width="1200" height="760" fill="url(#g-bsky)"/>
+      <circle cx="600" cy="330" r="90" fill="#FFE27A"/><circle cx="600" cy="330" r="130" fill="#FFE27A" opacity=".25"/>
+      <g fill="#fff" opacity=".7"><ellipse cx="220" cy="150" rx="110" ry="24"/><ellipse cx="980" cy="120" rx="130" ry="26"/></g>
+      <rect y="340" width="1200" height="240" fill="url(#g-bsea)"/>
+      <g fill="#FFE27A" opacity=".5"><ellipse cx="600" cy="380" rx="120" ry="6"/><ellipse cx="600" cy="420" rx="200" ry="7"/><ellipse cx="600" cy="470" rx="140" ry="6"/></g>
+      <path d="M0 560 C300 520 600 600 1200 540 L1200 760 L0 760 Z" fill="url(#g-bsand)" filter="url(#grain)"/>
+      <g><rect x="1040" y="380" width="14" height="200" rx="6" fill="#8B4A1E" transform="rotate(-8 1047 480)"/><g fill="#3E9A3B"><ellipse cx="1010" cy="372" rx="70" ry="16" transform="rotate(-30 1010 372)"/><ellipse cx="1080" cy="372" rx="70" ry="16" transform="rotate(25 1080 372)"/><ellipse cx="1045" cy="350" rx="16" ry="56"/></g></g>
+      <g fill="#F26D8F"><path d="M300 640 l12 -26 l12 26 l28 6 l-21 18 l6 28 l-25 -14 l-25 14 l6 -28 l-21 -18 z"/></g>
+      <g fill="#F4A26B"><path d="M820 680 a20 20 0 1 1 40 0 l-6 20 l-28 0 z"/></g>
+      <g fill="#fff" opacity=".6"><ellipse cx="500" cy="600" rx="80" ry="5"/><ellipse cx="900" cy="620" rx="100" ry="6"/></g>
+    </symbol>
+    <symbol id="scene-hold" viewBox="0 0 1200 760">
+      <defs><linearGradient id="g-hwall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E4628"/><stop offset="1" stop-color="#3F2612"/></linearGradient><linearGradient id="g-hfloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8E5E36"/><stop offset="1" stop-color="#5C3A1D"/></linearGradient><radialGradient id="g-hlight" cx=".5" cy="0" r=".8"><stop offset="0" stop-color="#FFE9A8" stop-opacity=".6"/><stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/></radialGradient></defs>
+      <rect width="1200" height="760" fill="url(#g-hwall)"/>
+      <g stroke="#2E1A0A" stroke-width="4" opacity=".7"><path d="M0 120 Q600 80 1200 120"/><path d="M0 240 Q600 200 1200 240"/><path d="M0 360 Q600 320 1200 360"/></g>
+      <rect x="520" y="0" width="160" height="60" fill="#1B1F2E"/><rect x="520" y="0" width="160" height="60" fill="url(#g-hlight)"/><ellipse cx="600" cy="20" rx="420" ry="360" fill="url(#g-hlight)"/>
+      <rect y="520" width="1200" height="240" fill="url(#g-hfloor)"/>
+      <g stroke="#4A2C14" stroke-width="3" opacity=".7"><line x1="0" y1="580" x2="1200" y2="580"/><line x1="0" y1="640" x2="1200" y2="640"/><line x1="0" y1="700" x2="1200" y2="700"/></g>
+      <g><ellipse cx="150" cy="520" rx="70" ry="14" fill="#2E1A0A" opacity=".6"/><rect x="90" y="380" width="120" height="140" rx="20" fill="#8B5A2B"/><rect x="90" y="400" width="120" height="14" fill="#4A2C14"/><rect x="90" y="486" width="120" height="14" fill="#4A2C14"/><ellipse cx="150" cy="380" rx="60" ry="14" fill="#A66F3A"/></g>
+      <g><ellipse cx="1050" cy="520" rx="70" ry="14" fill="#2E1A0A" opacity=".6"/><rect x="990" y="380" width="120" height="140" rx="20" fill="#8B5A2B"/><rect x="990" y="400" width="120" height="14" fill="#4A2C14"/><rect x="990" y="486" width="120" height="14" fill="#4A2C14"/><ellipse cx="1050" cy="380" rx="60" ry="14" fill="#A66F3A"/></g>
+      <g><rect x="240" y="430" width="110" height="90" rx="6" fill="#A66F3A"/><g stroke="#4A2C14" stroke-width="4"><line x1="240" y1="430" x2="350" y2="520"/><line x1="350" y1="430" x2="240" y2="520"/></g><rect x="850" y="450" width="90" height="70" rx="6" fill="#A66F3A"/><g stroke="#4A2C14" stroke-width="4"><line x1="850" y1="450" x2="940" y2="520"/><line x1="940" y1="450" x2="850" y2="520"/></g></g>
+      <g stroke="#3E2A12" stroke-width="6" fill="none" stroke-linecap="round"><path d="M400 0 C420 120 380 200 420 300"/><path d="M800 0 C780 120 820 200 780 300"/></g>
+      <g fill="#F2C14E"><circle cx="600" cy="700" r="8"/><circle cx="630" cy="712" r="6"/></g>
+    </symbol>
+    <symbol id="scene-chartroom" viewBox="0 0 1200 760">
+      <defs><linearGradient id="g-cwall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A4E2A"/><stop offset="1" stop-color="#4E2F16"/></linearGradient><linearGradient id="g-ctable" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B98A55"/><stop offset="1" stop-color="#8E6438"/></linearGradient><linearGradient id="g-cmap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6E1B5"/><stop offset="1" stop-color="#E4C48A"/></linearGradient></defs>
+      <rect width="1200" height="760" fill="url(#g-cwall)"/>
+      <g stroke="#3E2510" stroke-width="3" opacity=".6"><line x1="0" y1="100" x2="1200" y2="100"/><line x1="0" y1="200" x2="1200" y2="200"/><line x1="0" y1="300" x2="1200" y2="300"/><line x1="0" y1="400" x2="1200" y2="400"/></g>
+      <g><rect x="120" y="60" width="300" height="200" rx="6" fill="url(#g-cmap)"/><rect x="120" y="60" width="300" height="200" rx="6" fill="none" stroke="#8E6438" stroke-width="6"/><path d="M160 200 C200 120 260 220 300 140 C330 100 370 150 390 110" fill="none" stroke="#B26A2E" stroke-width="3" stroke-dasharray="8 6"/><g stroke="#B26A2E" stroke-width="4"><line x1="380" y1="100" x2="400" y2="120"/><line x1="400" y1="100" x2="380" y2="120"/></g><path d="M170 100 c20 -20 50 -10 60 10 c-30 10 -50 20 -60 -10 z" fill="#7BC96F"/></g>
+      <g><circle cx="960" cy="160" r="90" fill="#E9CB84"/><circle cx="960" cy="160" r="90" fill="none" stroke="#6B4423" stroke-width="10"/><circle cx="960" cy="160" r="70" fill="none" stroke="#B98A55" stroke-width="3"/><g stroke="#3E2A12" stroke-width="4" stroke-linecap="round"><line x1="960" y1="90" x2="960" y2="110"/><line x1="960" y1="210" x2="960" y2="230"/><line x1="890" y1="160" x2="910" y2="160"/><line x1="1010" y1="160" x2="1030" y2="160"/></g><polygon points="960,100 975,160 960,220 945,160" fill="#D9302A"/><polygon points="960,100 975,160 945,160" fill="#F26D8F"/><circle cx="960" cy="160" r="8" fill="#3E2A12"/></g>
+      <path d="M0 470 L1200 470 L1200 760 L0 760 Z" fill="url(#g-ctable)"/>
+      <path d="M0 470 L1200 470 L1200 490 L0 490 Z" fill="#D9B27E"/>
+      <g stroke="#6B4423" stroke-width="2" opacity=".5"><line x1="0" y1="560" x2="1200" y2="560"/><line x1="0" y1="650" x2="1200" y2="650"/></g>
+      <g><rect x="80" y="520" width="60" height="120" rx="6" fill="#F6E1B5" transform="rotate(12 110 580)"/><rect x="1060" y="530" width="60" height="120" rx="6" fill="#F6E1B5" transform="rotate(-10 1090 590)"/></g>
+      <g><path d="M560 600 h80 v40 h-80 z" fill="#3E2A12"/><path d="M600 600 l0 -50" stroke="#3E2A12" stroke-width="6"/><path d="M585 550 q15 -30 30 0" fill="#FFB84D"/><ellipse cx="600" cy="540" rx="14" ry="20" fill="#FFE27A" opacity=".9"><animate attributeName="ry" values="20;24;20" dur="1.4s" repeatCount="indefinite"/></ellipse></g>
+    </symbol>
+    <!-- Букварика: селце (карта/настройки) -->
+    <symbol id="scene-village" viewBox="0 0 1600 1000">
+      <rect width="1600" height="1000" fill="url(#g-sky)"/>
+      <circle cx="300" cy="150" r="230" fill="url(#g-sun)"/>
+      <use href="#cloud" x="900" y="60" width="360" height="160" opacity=".95"><animateTransform attributeName="transform" type="translate" values="0 0; -60 0; 0 0" dur="44s" repeatCount="indefinite"/></use>
+      <use href="#cloud" x="1250" y="200" width="240" height="108" opacity=".8"><animateTransform attributeName="transform" type="translate" values="0 0; -40 4; 0 0" dur="32s" repeatCount="indefinite"/></use>
+      <use href="#cloud" x="80" y="330" width="220" height="100" opacity=".7"/>
+      <path d="M0 520 C200 440 420 470 620 430 C820 390 1000 470 1200 420 C1380 375 1500 420 1600 400 L1600 1000 L0 1000 Z" fill="#9BD37A"/>
+      <path d="M0 640 C260 590 480 660 760 610 C1040 560 1300 640 1600 590 L1600 1000 L0 1000 Z" fill="#7FC262"/>
+      <path d="M0 800 C300 760 600 830 900 790 C1200 750 1400 810 1600 780 L1600 1000 L0 1000 Z" fill="#6AB350"/>
+      <path d="M-40 920 C260 840 520 900 760 780 C960 680 1160 720 1380 640 C1480 600 1560 560 1640 540" fill="none" stroke="#C99A5C" stroke-width="64" stroke-linecap="round"/>
+      <path d="M-40 920 C260 840 520 900 760 780 C960 680 1160 720 1380 640 C1480 600 1560 560 1640 540" fill="none" stroke="#E2BC86" stroke-width="44" stroke-linecap="round"/>
+      <g fill="#2E8F3B"><polygon points="60,560 110,440 160,560"/><polygon points="130,580 190,430 250,580"/><polygon points="1380,520 1430,400 1480,520"/><polygon points="1470,560 1530,420 1590,560"/></g>
+      <g fill="#8B5A2B"><rect x="102" y="560" width="16" height="30"/><rect x="182" y="580" width="16" height="30"/><rect x="1422" y="520" width="16" height="28"/><rect x="1522" y="560" width="16" height="30"/></g>
+      <g fill="#F7D65A"><circle cx="420" cy="700" r="8"/><circle cx="1240" cy="560" r="8"/><circle cx="1100" cy="880" r="8"/><circle cx="300" cy="860" r="8"/></g>
+      <g fill="#fff"><circle cx="520" cy="740" r="6"/><circle cx="980" cy="620" r="6"/><circle cx="1320" cy="900" r="6"/></g>
+      <g stroke="#4E9A3A" stroke-width="5" stroke-linecap="round" fill="none"><path d="M700 900 l0 -30 M690 900 l-12 -24 M712 900 l12 -22"/><path d="M1180 760 l0 -26 M1170 760 l-10 -20 M1190 760 l10 -20"/><path d="M380 620 l0 -26 M370 620 l-10 -20 M390 620 l10 -20"/></g>
+    </symbol>
+    <!-- Букварика: поляна с планини (фон на играта) -->
+    <symbol id="scene-meadow" viewBox="0 0 1200 760">
+      <rect width="1200" height="760" fill="url(#g-sky)"/>
+      <use href="#cloud" x="120" y="60" width="260" height="118" opacity=".95"><animateTransform attributeName="transform" type="translate" values="0 0; 40 0; 0 0" dur="36s" repeatCount="indefinite"/></use>
+      <use href="#cloud" x="820" y="40" width="300" height="136" opacity=".9"><animateTransform attributeName="transform" type="translate" values="0 0; -50 0; 0 0" dur="42s" repeatCount="indefinite"/></use>
+      <path d="M0 420 L120 280 L240 380 L360 230 L500 400 L620 250 L760 380 L900 240 L1040 370 L1200 260 L1200 480 L0 480 Z" fill="#B9D7E8"/>
+      <path d="M340 260 L360 230 L385 265 Z M600 275 L620 250 L645 282 Z M880 265 L900 240 L925 270 Z" fill="#fff" opacity=".9"/>
+      <path d="M0 440 C200 380 400 440 600 400 C800 360 1000 430 1200 390 L1200 760 L0 760 Z" fill="#9BD37A"/>
+      <path d="M0 540 C220 500 420 560 640 520 C860 480 1040 540 1200 510 L1200 760 L0 760 Z" fill="#7FC262"/>
+      <path d="M0 660 C260 620 520 680 800 640 C1000 610 1120 650 1200 640 L1200 760 L0 760 Z" fill="#6AB350"/>
+      <path d="M-20 700 C200 620 420 700 640 600 C820 520 1000 560 1220 500" fill="none" stroke="#8ED6F7" stroke-width="18" stroke-linecap="round" opacity=".9"/>
+      <g fill="#2E8F3B"><polygon points="40,470 80,370 120,470"/><polygon points="1090,450 1130,350 1170,450"/><polygon points="1140,480 1175,390 1200,480"/></g>
+      <g fill="#8B5A2B"><rect x="74" y="470" width="12" height="24"/><rect x="1124" y="450" width="12" height="24"/></g>
+      <g fill="#F7D65A"><circle cx="220" cy="600" r="6"/><circle cx="960" cy="700" r="6"/><circle cx="1060" cy="560" r="6"/></g>
+      <g fill="#fff"><circle cx="340" cy="720" r="5"/><circle cx="880" cy="590" r="5"/></g>
+      <g stroke="#4E9A3A" stroke-width="4" stroke-linecap="round" fill="none"><path d="M160 740 l0 -24 M150 740 l-10 -18 M170 740 l10 -18"/><path d="M1010 640 l0 -22 M1000 640 l-8 -16 M1020 640 l8 -16"/></g>
+    </symbol>
+    <!-- Къщички на селцето (200x200) -->
+    <symbol id="house-1" viewBox="0 0 200 200"><ellipse cx="100" cy="180" rx="80" ry="16" fill="#5FA84A"/><rect x="46" y="96" width="108" height="76" rx="6" fill="#8E5BD9"/><rect x="46" y="96" width="108" height="14" fill="#6D3FB8"/><path d="M36 100 L100 44 L164 100 Z" fill="#B23A3A"/><path d="M50 98 L100 56 L150 98 Z" fill="#D14848"/><rect x="88" y="128" width="26" height="44" rx="12" fill="#F2C14E"/><circle cx="68" cy="130" r="10" fill="#FFF3C4" stroke="#F2C14E" stroke-width="3"/><circle cx="134" cy="130" r="10" fill="#FFF3C4" stroke="#F2C14E" stroke-width="3"/><g transform="rotate(-30 118 40)"><rect x="98" y="34" width="52" height="14" rx="6" fill="#C98A52"/><rect x="142" y="31" width="14" height="20" rx="4" fill="#8ED6F7"/></g><rect x="96" y="14" width="4" height="40" fill="#C98A52"/><circle cx="98" cy="12" r="6" fill="#F2C14E"/><g fill="#FFE27A"><path d="M60 68 l3 7 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1z"/></g></symbol>
+    <symbol id="house-2" viewBox="0 0 200 200"><ellipse cx="100" cy="180" rx="84" ry="16" fill="#5FA84A"/><rect x="40" y="94" width="120" height="78" rx="6" fill="#F7E7C6"/><path d="M28 100 L100 40 L172 100 Z" fill="#C7502E"/><path d="M44 98 L100 52 L156 98 Z" fill="#E9663F"/><rect x="132" y="50" width="18" height="40" fill="#9C5A3A"/><rect x="128" y="44" width="26" height="10" rx="3" fill="#7A4326"/><rect x="86" y="126" width="28" height="46" rx="12" fill="#8B5A2B"/><rect x="52" y="118" width="24" height="24" rx="4" fill="#8ED6F7" stroke="#C98A52" stroke-width="4"/><rect x="124" y="118" width="24" height="24" rx="4" fill="#8ED6F7" stroke="#C98A52" stroke-width="4"/><path d="M52 150 h24 M124 150 h24" stroke="#E9663F" stroke-width="6" stroke-linecap="round"/><g fill="#F2C14E"><circle cx="56" cy="156" r="5"/><circle cx="66" cy="158" r="5"/><circle cx="130" cy="156" r="5"/><circle cx="142" cy="158" r="5"/></g><ellipse cx="141" cy="36" rx="12" ry="6" fill="#fff" opacity=".8"/></symbol>
+    <symbol id="house-3" viewBox="0 0 200 200"><ellipse cx="100" cy="180" rx="84" ry="16" fill="#5FA84A"/><rect x="36" y="100" width="128" height="72" rx="8" fill="#F2C14E"/><path d="M36 104 a64 60 0 0 1 128 0 z" fill="#4B4B5C"/><path d="M52 104 a48 46 0 0 1 96 0 z" fill="#5E5E72"/><rect x="88" y="126" width="26" height="46" rx="13" fill="#6B3A16"/><circle cx="100" cy="82" r="12" fill="#FFF3C4" stroke="#C98A52" stroke-width="3"/><rect x="50" y="122" width="22" height="22" rx="4" fill="#8ED6F7" stroke="#C98A52" stroke-width="4"/><rect x="128" y="122" width="22" height="22" rx="4" fill="#8ED6F7" stroke="#C98A52" stroke-width="4"/><rect x="150" y="30" width="4" height="60" fill="#8B5A2B"/><path d="M154 32 l30 8 -30 10 z" fill="#D14848"/><rect x="44" y="34" width="4" height="60" fill="#8B5A2B"/><path d="M48 36 l30 8 -30 10 z" fill="#D14848"/><g fill="#8E5BD9"><circle cx="46" cy="160" r="5"/><circle cx="56" cy="164" r="5"/><circle cx="148" cy="160" r="5"/><circle cx="156" cy="164" r="5"/></g></symbol>
+    <symbol id="house-4" viewBox="0 0 200 200"><ellipse cx="100" cy="180" rx="84" ry="16" fill="#5FA84A"/><path d="M50 172 V100 a50 50 0 0 1 100 0 V172 Z" fill="#FBF3E4"/><path d="M28 104 a72 44 0 0 1 144 0 z" fill="#E0452E"/><path d="M40 100 a60 36 0 0 1 120 0 z" fill="#F06045"/><g fill="#FFF3C4"><circle cx="70" cy="82" r="8"/><circle cx="118" cy="74" r="10"/><circle cx="150" cy="90" r="6"/></g><rect x="86" y="128" width="28" height="44" rx="14" fill="#4A6FE0"/><circle cx="66" cy="126" r="11" fill="#8ED6F7" stroke="#C98A52" stroke-width="4"/><circle cx="134" cy="126" r="11" fill="#8ED6F7" stroke="#C98A52" stroke-width="4"/><path d="M60 56 q10 -18 24 -6 q10 -10 22 0" fill="none" stroke="#6BC24A" stroke-width="8" stroke-linecap="round"/><circle cx="110" cy="50" r="6" fill="#6BC24A"/><circle cx="112" cy="48" r="2" fill="#1B2A3A"/><rect x="150" y="120" width="6" height="52" fill="#8B5A2B"/><circle cx="153" cy="116" r="8" fill="#F2C14E"/></symbol>
+    <symbol id="house-5" viewBox="0 0 200 200"><ellipse cx="100" cy="180" rx="86" ry="16" fill="#5FA84A"/><rect x="34" y="104" width="132" height="68" rx="6" fill="#E9CFA0"/><path d="M22 108 L100 46 L178 108 Z" fill="#B23A3A"/><path d="M40 106 L100 58 L160 106 Z" fill="#D14848"/><path d="M60 78 L100 46 L140 78" fill="none" stroke="#8B5A2B" stroke-width="6" stroke-linecap="round"/><rect x="86" y="128" width="28" height="44" rx="4" fill="#8B5A2B"/><rect x="46" y="120" width="26" height="26" rx="3" fill="#8ED6F7" stroke="#8B5A2B" stroke-width="4"/><rect x="128" y="120" width="26" height="26" rx="3" fill="#8ED6F7" stroke="#8B5A2B" stroke-width="4"/><path d="M34 104 h132 M34 172 h132" stroke="#8B5A2B" stroke-width="6"/><g fill="#8B5A2B"><rect x="28" y="100" width="10" height="76" rx="3"/><rect x="162" y="100" width="10" height="76" rx="3"/></g><g fill="#F2C14E"><circle cx="150" cy="60" r="8"/><path d="M146 66 l4 -14 l4 14z"/></g><ellipse cx="160" cy="170" rx="14" ry="8" fill="#5E5E72"/><circle cx="170" cy="164" r="6" fill="#5E5E72"/></symbol>
+    <symbol id="house-6" viewBox="0 0 200 200"><ellipse cx="100" cy="180" rx="86" ry="16" fill="#5FA84A"/><rect x="60" y="104" width="112" height="68" rx="6" fill="#A86A3A"/><path d="M60 110 h112 M60 126 h112 M60 142 h112 M60 158 h112" stroke="#8B5A2B" stroke-width="3"/><path d="M46 108 L116 44 L186 108 Z" fill="#E4C05A"/><path d="M58 106 L116 56 L174 106 Z" fill="#F2D06B"/><rect x="128" y="128" width="26" height="44" rx="4" fill="#5B3A1E"/><rect x="82" y="122" width="26" height="24" rx="3" fill="#8ED6F7" stroke="#5B3A1E" stroke-width="4"/><g><path d="M14 172 a34 34 0 0 1 68 0 z" fill="#F06045"/><path d="M20 172 a28 28 0 0 1 56 0 z" fill="#F2C14E"/><path d="M26 172 a22 22 0 0 1 44 0 z" fill="#6BC24A"/><path d="M32 172 a16 16 0 0 1 32 0 z" fill="#4A6FE0"/><path d="M38 172 a10 10 0 0 1 20 0 z" fill="#8E5BD9"/></g><g fill="#FFE27A"><path d="M36 120 l3 7 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1z"/></g></symbol>
+    <!-- Чудовища за „Намери чудовището“ (120x90, надничат зад картата) -->
+    <symbol id="mo-1" viewBox="0 0 120 90"><path d="M18 90 V50 a42 42 0 0 1 84 0 V90 Z" fill="#5CD0D6"/><path d="M52 18 q8 -16 16 -4 q6 -14 12 2 q-8 -2 -14 6 q-4 -8 -14 -4z" fill="#B14BD6"/><circle cx="44" cy="52" r="11" fill="#fff"/><circle cx="76" cy="52" r="11" fill="#fff"/><circle cx="46" cy="54" r="5" fill="#1B2A3A"/><circle cx="78" cy="54" r="5" fill="#1B2A3A"/><path d="M48 72 q12 10 24 0" fill="none" stroke="#1B2A3A" stroke-width="3" stroke-linecap="round"/><g fill="#B14BD6"><circle cx="30" cy="70" r="3"/><circle cx="36" cy="78" r="2.5"/><circle cx="90" cy="70" r="3"/><circle cx="84" cy="78" r="2.5"/></g></symbol>
+    <symbol id="mo-2" viewBox="0 0 120 90"><path d="M22 90 V56 a38 34 0 0 1 76 0 V90 Z" fill="#F0554A"/><g stroke="#F0554A" stroke-width="8" stroke-linecap="round"><path d="M40 40 l-6 -22 M80 40 l6 -22"/></g><circle cx="34" cy="16" r="11" fill="#fff"/><circle cx="86" cy="16" r="11" fill="#fff"/><circle cx="35" cy="17" r="5" fill="#1B2A3A"/><circle cx="87" cy="17" r="5" fill="#1B2A3A"/><ellipse cx="60" cy="68" rx="12" ry="9" fill="#1B2A3A"/><path d="M50 66 h20 v4 h-20z" fill="#fff"/><g fill="#fff"><path d="M42 82 l2 -8 M78 82 l-2 -8" stroke="#fff" stroke-width="2"/></g></symbol>
+    <symbol id="mo-3" viewBox="0 0 120 90"><rect x="18" y="26" width="84" height="70" rx="20" fill="#9CB74A"/><path d="M18 60 q40 -30 84 -10 V26 H18z" fill="#C8A94A"/><g fill="#6B8F2E"><path d="M34 26 l4 -16 4 16z M50 26 l4 -18 4 18z M66 26 l4 -18 4 18z M82 26 l4 -16 4 16z"/></g><circle cx="44" cy="54" r="10" fill="#fff"/><circle cx="76" cy="54" r="10" fill="#fff"/><circle cx="45" cy="55" r="5" fill="#8B4A1E"/><circle cx="77" cy="55" r="5" fill="#8B4A1E"/><path d="M50 74 q10 8 22 -2" fill="none" stroke="#1B2A3A" stroke-width="3" stroke-linecap="round"/></symbol>
+    <symbol id="mo-4" viewBox="0 0 120 90"><path d="M24 90 V52 a36 40 0 0 1 72 0 V90 Z" fill="#F2C838"/><path d="M40 20 a20 12 0 0 1 40 0 q-20 -4 -40 0z" fill="#D9AC1E"/><path d="M14 58 l12 -8 -2 16z M106 58 l-12 -8 2 16z" fill="#8FB84A"/><circle cx="46" cy="50" r="10" fill="#fff"/><circle cx="74" cy="50" r="10" fill="#fff"/><circle cx="47" cy="51" r="5" fill="#1B2A3A"/><circle cx="75" cy="51" r="5" fill="#1B2A3A"/><rect x="46" y="66" width="28" height="12" rx="4" fill="#1B2A3A"/><path d="M50 66 l3 6 3 -6 3 6 3 -6 3 6 3 -6 3 6 3 -6" fill="#fff"/></symbol>
+    <symbol id="mo-5" viewBox="0 0 120 90"><path d="M20 90 V54 a40 36 0 0 1 80 0 V90 Z" fill="#3E8F4E"/><path d="M40 24 q-8 -14 4 -18 q6 8 8 16z M80 24 q8 -14 -4 -18 q-6 8 -8 16z" fill="#F08A2A"/><circle cx="42" cy="52" r="11" fill="#fff"/><circle cx="78" cy="52" r="11" fill="#fff"/><circle cx="43" cy="53" r="5" fill="#1B2A3A"/><circle cx="79" cy="53" r="5" fill="#1B2A3A"/><ellipse cx="60" cy="74" rx="8" ry="7" fill="#C23A2A"/><ellipse cx="60" cy="72" rx="4" ry="3" fill="#1B2A3A"/><g fill="#F08A2A"><circle cx="30" cy="72" r="4"/><circle cx="90" cy="72" r="4"/></g></symbol>
+    <symbol id="mo-6" viewBox="0 0 120 90"><path d="M22 90 V50 a38 40 0 0 1 76 0 V90 Z" fill="#F29A3A"/><g fill="#F29A3A"><path d="M40 16 l6 -14 6 14z M56 12 l4 -12 4 12z M72 16 l-6 -14 -6 14z M26 34 l-12 -8 12 -4z M94 34 l12 -8 -12 -4z"/></g><g fill="#4A8FD6"><path d="M30 28 l-14 -10 q2 14 12 16z M90 28 l14 -10 q-2 14 -12 16z"/></g><circle cx="44" cy="52" r="10" fill="#fff"/><circle cx="76" cy="52" r="10" fill="#fff"/><circle cx="45" cy="53" r="5" fill="#1B2A3A"/><circle cx="77" cy="53" r="5" fill="#1B2A3A"/><path d="M50 72 q10 8 20 0" fill="none" stroke="#1B2A3A" stroke-width="3" stroke-linecap="round"/><g fill="#4A8FD6"><circle cx="32" cy="66" r="2.5"/><circle cx="38" cy="72" r="2.5"/><circle cx="88" cy="66" r="2.5"/><circle cx="82" cy="72" r="2.5"/></g></symbol>
+    <symbol id="art-letters" viewBox="0 0 220 180"><g transform="translate(40 70)"><use href="#mo-6" x="0" y="-52" width="96" height="72"/><rect x="-2" y="10" width="100" height="72" rx="12" fill="#FFF4D1" stroke="#C4A580" stroke-width="5"/><text x="48" y="62" text-anchor="middle" font-family="Rubik, sans-serif" font-weight="700" font-size="46" fill="#4A2A10">а</text></g><g transform="translate(120 96)"><use href="#mo-2" x="0" y="-52" width="80" height="60"/><rect x="0" y="6" width="80" height="60" rx="10" fill="#FFF4D1" stroke="#C4A580" stroke-width="5"/><text x="40" y="50" text-anchor="middle" font-family="Rubik, sans-serif" font-weight="700" font-size="38" fill="#4A2A10">б</text></g><g fill="#FFD34D"><path d="M186 30 l4 9 9 1 -7 6 2 9 -8 -4 -8 4 2 -9 -7 -6 9 -1z"/><path d="M20 20 l3 6 6 1 -5 4 1 6 -5 -3 -5 3 1 -6 -5 -4 6 -1z"/></g></symbol>
+    <!-- Чипове за звукове (Букварика): червен = гласна, син = твърда съгласна, зелен = мека, сив = без твърдост; камбанка = звучна, слушалки = беззвучна -->
+    <symbol id="chip-base" viewBox="0 0 100 100"><circle cx="50" cy="52" r="46" fill="rgba(0,0,0,.18)"/><circle cx="50" cy="48" r="46" fill="var(--c2)"/><circle cx="50" cy="48" r="38" fill="var(--c1)"/><ellipse cx="38" cy="30" rx="18" ry="10" fill="#fff" opacity=".45"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 100 100"><path d="M50 22 a18 18 0 0 1 18 18 v14 l8 12 H24 l8 -12 V40 a18 18 0 0 1 18 -18z" fill="#F7C948" stroke="#8A5A00" stroke-width="3" stroke-linejoin="round"/><circle cx="50" cy="19" r="4" fill="#8A5A00"/><path d="M42 68 a8 8 0 0 0 16 0z" fill="#8A5A00"/></symbol>
+    <symbol id="icon-headphones" viewBox="0 0 100 100"><path d="M26 62 V48 a24 24 0 0 1 48 0 v14" fill="none" stroke="#2B2B2B" stroke-width="6" stroke-linecap="round"/><rect x="20" y="56" width="14" height="22" rx="5" fill="#F79A2B" stroke="#2B2B2B" stroke-width="3"/><rect x="66" y="56" width="14" height="22" rx="5" fill="#F79A2B" stroke="#2B2B2B" stroke-width="3"/></symbol>
+    <symbol id="chip-vowel" viewBox="0 0 100 100" style="--c1:#E0453A;--c2:#B3231C"><use href="#chip-base"/></symbol>
+    <symbol id="chip-voiced" viewBox="0 0 100 100" style="--c1:#3F6FD8;--c2:#2748A8"><use href="#chip-base"/><use href="#icon-bell" x="14" y="12" width="72" height="72"/></symbol>
+    <symbol id="chip-unvoiced" viewBox="0 0 100 100" style="--c1:#3F6FD8;--c2:#2748A8"><use href="#chip-base"/><use href="#icon-headphones" x="14" y="12" width="72" height="72"/></symbol>
+    <symbol id="chip-voiced-soft" viewBox="0 0 100 100" style="--c1:#4CB84A;--c2:#2E8A2C"><use href="#chip-base"/><use href="#icon-bell" x="14" y="12" width="72" height="72"/></symbol>
+    <symbol id="chip-unvoiced-soft" viewBox="0 0 100 100" style="--c1:#4CB84A;--c2:#2E8A2C"><use href="#chip-base"/><use href="#icon-headphones" x="14" y="12" width="72" height="72"/></symbol>
+    <symbol id="chip-grey-voiced" viewBox="0 0 100 100" style="--c1:#C9C9C9;--c2:#9A9A9A"><use href="#chip-base"/><use href="#icon-bell" x="14" y="12" width="72" height="72"/></symbol>
+    <symbol id="chip-grey-unvoiced" viewBox="0 0 100 100" style="--c1:#C9C9C9;--c2:#9A9A9A"><use href="#chip-base"/><use href="#icon-headphones" x="14" y="12" width="72" height="72"/></symbol>
+    <symbol id="chip-hard" viewBox="0 0 100 100" style="--c1:#3F6FD8;--c2:#2748A8"><use href="#chip-base"/></symbol>
+    <symbol id="chip-soft" viewBox="0 0 100 100" style="--c1:#4CB84A;--c2:#2E8A2C"><use href="#chip-base"/></symbol>
+    <!-- Картинки за думи (Букварика), 100x100 -->
+    <symbol id="pic-elha" viewBox="0 0 100 100"><polygon points="50,8 22,48 78,48" fill="#2E8F3B"/><polygon points="50,30 16,74 84,74" fill="#3AA648"/><rect x="43" y="74" width="14" height="18" fill="#8B5A2B"/><g fill="#F2C14E"><circle cx="40" cy="52" r="4"/><circle cx="62" cy="64" r="4"/><circle cx="50" cy="40" r="3.5"/></g><path d="M50 4 l3 6 6 1 -4 4 1 6 -6 -3 -6 3 1 -6 -4 -4 6 -1z" fill="#FFD34D"/></symbol>
+    <symbol id="pic-jaba" viewBox="0 0 100 100"><ellipse cx="50" cy="62" rx="34" ry="24" fill="#5CB24A"/><circle cx="34" cy="38" r="12" fill="#5CB24A"/><circle cx="66" cy="38" r="12" fill="#5CB24A"/><circle cx="34" cy="37" r="7" fill="#fff"/><circle cx="66" cy="37" r="7" fill="#fff"/><circle cx="35" cy="38" r="3.5" fill="#1B2A3A"/><circle cx="67" cy="38" r="3.5" fill="#1B2A3A"/><path d="M36 66 q14 10 28 0" fill="none" stroke="#1B2A3A" stroke-width="3" stroke-linecap="round"/><g fill="#4E9A3A"><ellipse cx="20" cy="82" rx="12" ry="6"/><ellipse cx="80" cy="82" rx="12" ry="6"/></g></symbol>
+    <symbol id="pic-zvezda" viewBox="0 0 100 100"><path d="M50 8 l12 27 29 3 -22 19 7 29 -26 -15 -26 15 7 -29 -22 -19 29 -3z" fill="#F5B70A" stroke="#C98A0A" stroke-width="3" stroke-linejoin="round"/><path d="M50 22 l7 16 17 2 -13 11 4 17 -15 -9z" fill="#FFD34D" opacity=".7"/></symbol>
+    <symbol id="pic-igla" viewBox="0 0 100 100"><path d="M18 82 L78 22" stroke="#9AA3B2" stroke-width="7" stroke-linecap="round"/><path d="M78 22 l6 -6" stroke="#6B7280" stroke-width="7" stroke-linecap="round"/><ellipse cx="24" cy="76" rx="7" ry="4" transform="rotate(-45 24 76)" fill="none" stroke="#6B7280" stroke-width="4"/><path d="M22 78 q-14 10 -6 18 q10 6 20 -4" fill="none" stroke="#E0453A" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="pic-jogurt" viewBox="0 0 100 100"><path d="M26 30 h48 l-6 56 h-36z" fill="#F7F1E1" stroke="#C4A580" stroke-width="3"/><rect x="22" y="22" width="56" height="12" rx="4" fill="#E0453A"/><path d="M34 52 q16 -10 32 0" fill="none" stroke="#E0453A" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="66" r="6" fill="#E0453A"/></symbol>
+    <symbol id="pic-nojica" viewBox="0 0 100 100"><circle cx="30" cy="72" r="12" fill="none" stroke="#E0453A" stroke-width="7"/><circle cx="62" cy="80" r="12" fill="none" stroke="#E0453A" stroke-width="7"/><path d="M38 64 L80 18 M54 70 L20 20" stroke="#9AA3B2" stroke-width="8" stroke-linecap="round"/><circle cx="47" cy="47" r="4" fill="#1B2A3A"/></symbol>
+    <symbol id="pic-ochila" viewBox="0 0 100 100"><circle cx="30" cy="54" r="18" fill="#BFE6FA" stroke="#1B2A3A" stroke-width="6"/><circle cx="70" cy="54" r="18" fill="#BFE6FA" stroke="#1B2A3A" stroke-width="6"/><path d="M48 54 h4 M12 50 l-8 -10 M88 50 l8 -10" stroke="#1B2A3A" stroke-width="6" stroke-linecap="round"/></symbol>
+    <symbol id="pic-uho" viewBox="0 0 100 100"><path d="M36 70 C20 60 22 24 50 20 C76 16 80 44 68 54 C60 62 58 74 50 82 C44 88 38 84 36 70z" fill="#F7C9A4" stroke="#C98A6A" stroke-width="4"/><path d="M42 48 c2 -14 18 -14 18 -2 c0 8 -8 10 -8 20" fill="none" stroke="#C98A6A" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="pic-flag" viewBox="0 0 100 100"><rect x="22" y="12" width="6" height="80" rx="3" fill="#6B3A16"/><path d="M28 16 h50 l-12 16 12 16 h-50z" fill="#E0453A"/><path d="M28 30 h38 l-4 6 4 6 h-38z" fill="#F7F1E1" opacity=".5"/></symbol>
+    <symbol id="pic-hvarchilo" viewBox="0 0 100 100"><polygon points="50,8 82,44 50,76 18,44" fill="#4A6FE0"/><polygon points="50,8 82,44 50,44" fill="#F5B70A"/><polygon points="50,44 18,44 50,76" fill="#E0453A"/><path d="M50 76 q-10 10 0 16 q10 6 0 14" fill="none" stroke="#1B2A3A" stroke-width="3"/><g fill="#F5B70A"><path d="M44 86 l6 -4 6 4 -6 4z"/><path d="M46 98 l4 -3 4 3 -4 3z"/></g></symbol>
+    <symbol id="pic-shapka" viewBox="0 0 100 100"><ellipse cx="50" cy="70" rx="40" ry="10" fill="#4A2A10"/><path d="M28 70 V40 a22 22 0 0 1 44 0 V70z" fill="#6B3A16"/><rect x="28" y="56" width="44" height="8" fill="#E0453A"/></symbol>
+    <symbol id="pic-shtipka" viewBox="0 0 100 100"><path d="M30 14 h14 v46 l-8 26 h-6z" fill="#E9C46A" stroke="#B08A5E" stroke-width="3"/><path d="M56 14 h14 v46 l0 26 h-6 l-8 -26z" fill="#E9C46A" stroke="#B08A5E" stroke-width="3"/><path d="M28 44 a22 6 0 0 0 44 0" fill="none" stroke="#9AA3B2" stroke-width="5"/></symbol>
+    <symbol id="pic-jumruk" viewBox="0 0 100 100"><rect x="22" y="34" width="52" height="44" rx="14" fill="#F7C9A4" stroke="#C98A6A" stroke-width="4"/><g stroke="#C98A6A" stroke-width="3" fill="none"><path d="M36 34 v18 M48 34 v18 M60 34 v18"/></g><path d="M22 56 q-10 6 -2 18 h10" fill="#F7C9A4" stroke="#C98A6A" stroke-width="4"/><rect x="34" y="18" width="40" height="20" rx="10" fill="#F7C9A4" stroke="#C98A6A" stroke-width="4"/></symbol>
+    <symbol id="pic-nos" viewBox="0 0 100 100"><path d="M50 18 C46 40 34 52 36 66 C38 78 62 78 64 66 C66 52 54 40 50 18z" fill="#F7C9A4" stroke="#C98A6A" stroke-width="4"/><g fill="#C98A6A"><ellipse cx="42" cy="70" rx="5" ry="3"/><ellipse cx="58" cy="70" rx="5" ry="3"/></g></symbol>
+    <symbol id="pic-kliuch" viewBox="0 0 100 100"><circle cx="32" cy="36" r="18" fill="none" stroke="#F5B70A" stroke-width="9"/><path d="M44 48 L84 88 M74 78 l8 -8 M66 70 l8 -8" stroke="#F5B70A" stroke-width="9" stroke-linecap="round"/></symbol>
+    <symbol id="pic-samolet" viewBox="0 0 100 100"><path d="M10 50 h60 l16 -8 q10 0 6 8 q4 8 -6 8 l-16 -8z" fill="#8ED6F7" stroke="#2A7FC0" stroke-width="3"/><path d="M36 50 l-14 -26 h10 l22 26z M36 50 l-14 26 h10 l22 -26z" fill="#4A6FE0"/><path d="M14 50 l-6 -12 h8 l6 12z" fill="#4A6FE0"/><g fill="#fff"><circle cx="48" cy="48" r="3"/><circle cx="58" cy="48" r="3"/></g></symbol>
+    <symbol id="pic-topka" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="#fff" stroke="#1B2A3A" stroke-width="4"/><polygon points="50,30 66,42 60,60 40,60 34,42" fill="#1B2A3A"/><g stroke="#1B2A3A" stroke-width="4" fill="none"><path d="M50 30 v-16 M66 42 l16 -6 M60 60 l10 14 M40 60 l-10 14 M34 42 l-16 -6"/></g></symbol>
+    <symbol id="pic-vrata" viewBox="0 0 100 100"><rect x="26" y="10" width="48" height="84" rx="4" fill="#A86A3A" stroke="#6B3A16" stroke-width="4"/><rect x="34" y="18" width="32" height="30" rx="3" fill="#C98A52"/><rect x="34" y="54" width="32" height="30" rx="3" fill="#C98A52"/><circle cx="66" cy="54" r="4" fill="#F5B70A"/></symbol>
+    <symbol id="pic-zab" viewBox="0 0 100 100"><path d="M30 24 C18 24 16 46 24 60 C28 68 30 90 38 90 C46 90 44 66 50 66 C56 66 54 90 62 90 C70 90 72 68 76 60 C84 46 82 24 70 24 C60 24 58 30 50 30 C42 30 40 24 30 24z" fill="#fff" stroke="#9AA3B2" stroke-width="4"/></symbol>
+    <symbol id="pic-oko" viewBox="0 0 100 100"><path d="M8 50 Q50 10 92 50 Q50 90 8 50z" fill="#fff" stroke="#1B2A3A" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="#4A6FE0"/><circle cx="50" cy="50" r="8" fill="#1B2A3A"/><circle cx="56" cy="44" r="3" fill="#fff"/></symbol>
+    <symbol id="pic-usmivka" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#FFD34D" stroke="#C98A0A" stroke-width="4"/><circle cx="36" cy="42" r="5" fill="#1B2A3A"/><circle cx="64" cy="42" r="5" fill="#1B2A3A"/><path d="M30 60 q20 20 40 0" fill="none" stroke="#1B2A3A" stroke-width="5" stroke-linecap="round"/></symbol>
+    <!-- Читарика: космос -->
+    <symbol id="scene-space" viewBox="0 0 1600 1000">
+      <rect width="1600" height="1000" fill="url(#g-space)"/>
+      <g fill="#fff"><circle cx="120" cy="90" r="2.5"/><circle cx="340" cy="160" r="1.8"/><circle cx="560" cy="60" r="2.2"/><circle cx="780" cy="220" r="1.6"/><circle cx="990" cy="80" r="2.4"/><circle cx="1240" cy="150" r="1.8"/><circle cx="1480" cy="70" r="2.6"/><circle cx="200" cy="420" r="1.5"/><circle cx="470" cy="520" r="2"/><circle cx="880" cy="470" r="1.6"/><circle cx="1130" cy="400" r="2.2"/><circle cx="1400" cy="520" r="1.7"/><circle cx="90" cy="760" r="2"/><circle cx="640" cy="820" r="1.8"/><circle cx="1010" cy="880" r="2.3"/><circle cx="1330" cy="800" r="1.6"/><circle cx="1560" cy="940" r="2"/><circle cx="700" cy="330" r="1.4"/></g>
+      <g fill="#FFE27A" opacity=".9"><path d="M300 300 l4 10 10 1 -7 7 2 10 -9 -5 -9 5 2 -10 -7 -7 10 -1z"/><path d="M1300 680 l4 10 10 1 -7 7 2 10 -9 -5 -9 5 2 -10 -7 -7 10 -1z"/><path d="M900 120 l3 8 8 1 -6 5 2 8 -7 -4 -7 4 2 -8 -6 -5 8 -1z"/></g>
+      <ellipse cx="1350" cy="220" rx="140" ry="140" fill="#F2A65A"/><ellipse cx="1350" cy="220" rx="200" ry="34" fill="none" stroke="#FFD9A8" stroke-width="12" transform="rotate(-18 1350 220)"/><ellipse cx="1310" cy="190" rx="60" ry="30" fill="#F7C08A" opacity=".7"/>
+      <circle cx="180" cy="260" r="70" fill="#C9CCD6"/><circle cx="160" cy="240" r="16" fill="#A9ADBA"/><circle cx="205" cy="285" r="10" fill="#A9ADBA"/>
+      <path d="M0 860 C260 800 520 900 800 830 C1080 760 1340 860 1600 800 L1600 1000 L0 1000 Z" fill="#5A4BB8"/>
+      <path d="M0 920 C300 880 600 960 900 900 C1200 840 1400 920 1600 880 L1600 1000 L0 1000 Z" fill="#3E338E"/>
+      <g fill="#9F8CF0" opacity=".5"><ellipse cx="400" cy="880" rx="60" ry="14"/><ellipse cx="1100" cy="900" rx="80" ry="16"/></g>
+    </symbol>
+    <symbol id="scene-space-game" viewBox="0 0 1200 760">
+      <rect width="1200" height="760" fill="url(#g-space)"/>
+      <g fill="#fff"><circle cx="90" cy="80" r="2.2"/><circle cx="260" cy="150" r="1.6"/><circle cx="430" cy="50" r="2"/><circle cx="600" cy="200" r="1.5"/><circle cx="760" cy="70" r="2.2"/><circle cx="950" cy="140" r="1.7"/><circle cx="1130" cy="60" r="2.4"/><circle cx="150" cy="400" r="1.4"/><circle cx="360" cy="480" r="1.8"/><circle cx="680" cy="430" r="1.5"/><circle cx="870" cy="380" r="2"/><circle cx="1080" cy="470" r="1.6"/><circle cx="500" cy="640" r="1.8"/><circle cx="1000" cy="680" r="2"/></g>
+      <circle cx="1040" cy="150" r="90" fill="#F2A65A"/><ellipse cx="1040" cy="150" rx="130" ry="22" fill="none" stroke="#FFD9A8" stroke-width="9" transform="rotate(-18 1040 150)"/>
+      <circle cx="130" cy="180" r="48" fill="#C9CCD6"/><circle cx="118" cy="168" r="11" fill="#A9ADBA"/><circle cx="148" cy="196" r="7" fill="#A9ADBA"/>
+      <path d="M0 660 C200 610 400 690 600 640 C800 590 1000 670 1200 620 L1200 760 L0 760 Z" fill="#5A4BB8"/>
+      <path d="M0 710 C240 680 480 740 720 700 C960 660 1080 720 1200 690 L1200 760 L0 760 Z" fill="#3E338E"/>
+    </symbol>
+    <symbol id="planet" viewBox="0 0 200 200"><circle cx="100" cy="100" r="74" fill="var(--p2)"/><circle cx="100" cy="100" r="74" fill="var(--p1)" clip-path="inset(0 0 40% 0)"/><ellipse cx="80" cy="70" rx="30" ry="16" fill="#fff" opacity=".35"/><circle cx="130" cy="120" r="12" fill="var(--p2)" opacity=".8"/><circle cx="70" cy="125" r="8" fill="var(--p2)" opacity=".8"/><ellipse cx="100" cy="100" rx="108" ry="22" fill="none" stroke="var(--ring)" stroke-width="10" transform="rotate(-18 100 100)" opacity="var(--ringop, 1)"/></symbol>
+    <symbol id="art-rocket" viewBox="0 0 220 180"><g transform="rotate(-30 110 90)"><path d="M60 90 h80 l40 -20 v40 l-40 -20z" fill="#DCE6F5"/><path d="M140 70 l40 20 -40 20z" fill="#9FB3D6"/><rect x="60" y="70" width="80" height="40" rx="18" fill="#F0F4FA" stroke="#9FB3D6" stroke-width="4"/><circle cx="100" cy="90" r="12" fill="#4A6FE0" stroke="#fff" stroke-width="4"/><path d="M60 78 l-20 -14 v52 l20 -14z" fill="#E0453A"/><path d="M40 90 q-20 -14 -34 0 q14 14 34 0z" fill="#F5B70A"/><path d="M40 90 q-12 -8 -20 0 q8 8 20 0z" fill="#FFE27A"/></g><g fill="#FFE27A"><path d="M190 30 l4 9 9 1 -7 6 2 9 -8 -4 -8 4 2 -9 -7 -6 9 -1z"/><path d="M26 140 l3 6 6 1 -5 4 1 6 -5 -3 -5 3 1 -6 -5 -4 6 -1z"/></g></symbol>
+    <!-- Околен свят: парк -->
+    <symbol id="scene-nature" viewBox="0 0 1600 1000">
+      <rect width="1600" height="1000" fill="url(#g-sky)"/>
+      <circle cx="1300" cy="160" r="230" fill="url(#g-sun)"/>
+      <use href="#cloud" x="200" y="70" width="320" height="140" opacity=".95"><animateTransform attributeName="transform" type="translate" values="0 0; 50 0; 0 0" dur="40s" repeatCount="indefinite"/></use>
+      <use href="#cloud" x="900" y="120" width="240" height="108" opacity=".8"/>
+      <path d="M0 460 L180 300 L340 420 L520 250 L700 430 L880 280 L1060 420 L1240 300 L1420 430 L1600 320 L1600 560 L0 560 Z" fill="#B9D7E8"/>
+      <path d="M0 560 C260 500 520 560 800 510 C1080 460 1340 540 1600 490 L1600 1000 L0 1000 Z" fill="#8FCB6E"/>
+      <path d="M0 700 C300 650 600 720 900 670 C1200 620 1400 700 1600 660 L1600 1000 L0 1000 Z" fill="#6DB553"/>
+      <path d="M-40 940 C260 860 560 920 800 800 C1040 680 1300 740 1640 640" fill="none" stroke="#D8C39A" stroke-width="54" stroke-linecap="round"/>
+      <g fill="#8ED6F7"><ellipse cx="1250" cy="780" rx="220" ry="60"/><ellipse cx="1250" cy="775" rx="180" ry="40" fill="#BFE6FA" opacity=".6"/></g>
+      <g fill="#2E8F3B"><polygon points="80,600 130,470 180,600"/><polygon points="160,640 220,480 280,640"/><polygon points="1400,560 1450,430 1500,560"/><polygon points="1500,600 1550,470 1600,600"/></g>
+      <g fill="#8B5A2B"><rect x="122" y="600" width="16" height="34"/><rect x="212" y="640" width="16" height="34"/><rect x="1442" y="560" width="16" height="34"/><rect x="1542" y="600" width="16" height="34"/></g>
+      <g fill="#4FB04A"><circle cx="520" cy="560" r="54"/><circle cx="980" cy="520" r="48"/></g><g fill="#7B4A21"><rect x="512" y="600" width="16" height="40"/><rect x="972" y="560" width="16" height="36"/></g>
+      <g fill="#F7D65A"><circle cx="420" cy="760" r="8"/><circle cx="1180" cy="900" r="8"/><circle cx="700" cy="880" r="8"/></g><g fill="#fff"><circle cx="560" cy="820" r="6"/><circle cx="1020" cy="700" r="6"/><circle cx="300" cy="900" r="6"/></g>
+    </symbol>
+    <symbol id="scene-nature-game" viewBox="0 0 1200 760">
+      <rect width="1200" height="760" fill="url(#g-sky)"/>
+      <use href="#cloud" x="100" y="50" width="240" height="108" opacity=".95"/><use href="#cloud" x="820" y="90" width="260" height="118" opacity=".85"/>
+      <path d="M0 400 C200 340 400 400 600 360 C800 320 1000 390 1200 350 L1200 760 L0 760 Z" fill="#8FCB6E"/>
+      <path d="M0 520 C240 480 480 540 720 500 C960 460 1080 520 1200 500 L1200 760 L0 760 Z" fill="#6DB553"/>
+      <g fill="#8ED6F7"><ellipse cx="940" cy="600" rx="170" ry="44"/><ellipse cx="940" cy="596" rx="130" ry="28" fill="#BFE6FA" opacity=".6"/></g>
+      <g fill="#4FB04A"><circle cx="120" cy="420" r="60"/><circle cx="1080" cy="380" r="52"/></g><g fill="#7B4A21"><rect x="112" y="470" width="16" height="50"/><rect x="1072" y="425" width="16" height="44"/></g>
+      <g fill="#2E8F3B"><polygon points="260,470 300,360 340,470"/><polygon points="900,440 940,340 980,440"/></g><g fill="#8B5A2B"><rect x="294" y="470" width="12" height="26"/><rect x="934" y="440" width="12" height="26"/></g>
+      <g fill="#F7D65A"><circle cx="220" cy="640" r="6"/><circle cx="700" cy="700" r="6"/></g><g fill="#fff"><circle cx="420" cy="690" r="5"/><circle cx="1100" cy="720" r="5"/></g>
+    </symbol>
+    <symbol id="booth" viewBox="0 0 200 200"><ellipse cx="100" cy="182" rx="82" ry="14" fill="#5FA84A"/><path d="M30 92 L100 30 L170 92 Z" fill="var(--b1)"/><path d="M40 92 L100 40 L160 92 Z" fill="var(--b2)"/><rect x="36" y="92" width="128" height="80" rx="6" fill="#FBF3E4" stroke="#C4A580" stroke-width="4"/><rect x="36" y="92" width="128" height="18" fill="var(--b1)"/><path d="M36 110 h128" stroke="#fff" stroke-width="3" stroke-dasharray="14 10"/><rect x="82" y="120" width="36" height="52" rx="4" fill="var(--b2)"/><circle cx="100" cy="30" r="8" fill="#F5B70A"/><path d="M100 22 l22 -8 -22 -8z" fill="#E0453A"/></symbol>
+    <symbol id="art-leaf" viewBox="0 0 220 180"><path d="M40 150 C40 60 110 30 190 30 C190 110 130 160 40 150z" fill="#5CB24A"/><path d="M40 150 C90 110 130 80 190 30" fill="none" stroke="#2E8F3B" stroke-width="6" stroke-linecap="round"/><g stroke="#2E8F3B" stroke-width="4" stroke-linecap="round" fill="none"><path d="M80 118 l20 -30 M110 96 l20 -30 M140 74 l16 -24"/></g><circle cx="160" cy="130" r="14" fill="#E0453A"/><circle cx="150" cy="122" r="4" fill="#fff" opacity=".7"/></symbol>
+    <!-- Общи икони по категория за карти без картинка -->
+    <symbol id="pic-cat-mushroom" viewBox="0 0 100 100"><path d="M14 52 a36 30 0 0 1 72 0 z" fill="#E0453A"/><rect x="40" y="50" width="20" height="34" rx="8" fill="#F7E1C6" stroke="#C4A580" stroke-width="3"/><g fill="#fff"><circle cx="34" cy="38" r="5"/><circle cx="56" cy="30" r="6"/><circle cx="70" cy="44" r="4"/></g></symbol>
+    <symbol id="pic-cat-transport" viewBox="0 0 100 100"><path d="M14 62 v-14 l12 -18 h40 l16 18 v14z" fill="#4A6FE0"/><rect x="30" y="36" width="16" height="12" fill="#BFE6FA"/><rect x="52" y="36" width="16" height="12" fill="#BFE6FA"/><circle cx="30" cy="66" r="9" fill="#1B2A3A"/><circle cx="70" cy="66" r="9" fill="#1B2A3A"/><circle cx="30" cy="66" r="4" fill="#9AA3B2"/><circle cx="70" cy="66" r="4" fill="#9AA3B2"/></symbol>
+    <symbol id="pic-cat-animal" viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="20" ry="16" fill="#8B5A2B"/><g fill="#8B5A2B"><circle cx="26" cy="46" r="9"/><circle cx="42" cy="34" r="9"/><circle cx="58" cy="34" r="9"/><circle cx="74" cy="46" r="9"/></g></symbol>
+    <symbol id="pic-cat-tree" viewBox="0 0 100 100"><circle cx="50" cy="40" r="26" fill="#4FB04A"/><circle cx="34" cy="50" r="16" fill="#3AA648"/><circle cx="66" cy="50" r="16" fill="#3AA648"/><rect x="44" y="60" width="12" height="28" fill="#8B5A2B"/></symbol>
+    <symbol id="pic-cat-person" viewBox="0 0 100 100"><circle cx="50" cy="34" r="16" fill="#F7C9A4"/><path d="M22 90 a28 28 0 0 1 56 0z" fill="#4A6FE0"/><path d="M34 30 a16 12 0 0 1 32 0 v-4 a16 10 0 0 0 -32 0z" fill="#6B3A16"/></symbol>
+    <symbol id="pic-cat-item" viewBox="0 0 100 100"><rect x="22" y="30" width="56" height="48" rx="6" fill="#E9C46A" stroke="#B08A5E" stroke-width="3"/><path d="M22 44 h56 M50 30 v48" stroke="#B08A5E" stroke-width="3"/></symbol>
+    <symbol id="pic-cat-school" viewBox="0 0 100 100"><path d="M26 22 h48 v56 h-48z" fill="#fff" stroke="#8E5BD9" stroke-width="4"/><path d="M36 38 h28 M36 50 h28 M36 62 h18" stroke="#8E5BD9" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="pic-cat-emotion" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="#FFD34D" stroke="#C98A0A" stroke-width="3"/><circle cx="40" cy="44" r="4" fill="#1B2A3A"/><circle cx="60" cy="44" r="4" fill="#1B2A3A"/><path d="M38 60 q12 10 24 0" fill="none" stroke="#1B2A3A" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="pic-cat-sense" viewBox="0 0 100 100"><path d="M14 50 Q50 18 86 50 Q50 82 14 50z" fill="#fff" stroke="#1B2A3A" stroke-width="4"/><circle cx="50" cy="50" r="14" fill="#4A6FE0"/><circle cx="50" cy="50" r="6" fill="#1B2A3A"/></symbol>
+    <symbol id="parchment" viewBox="0 0 1200 720">
+      <path d="M96 86 Q600 36 1104 86 L1104 646 Q600 696 96 646 Z" fill="#000" opacity=".18" filter="url(#blur14)" transform="translate(0 14)"/>
+      <path d="M96 80 Q600 30 1104 80 L1104 640 Q600 690 96 640 Z" fill="url(#g-parch2)" filter="url(#paper)"/>
+      <path d="M96 80 Q600 30 1104 80 L1104 640 Q600 690 96 640 Z" fill="none" stroke="#B9672C" stroke-width="10" stroke-opacity=".35"/>
+      <path d="M110 92 Q600 44 1090 92" fill="none" stroke="#fff" stroke-width="4" stroke-opacity=".45"/>
+      <g fill="none" stroke="#9C5A26" stroke-width="3" stroke-dasharray="12 10" opacity=".35"><path d="M300 520 q80 -60 180 -20 t220 -30"/></g>
+      <g stroke="#9C5A26" stroke-width="5" opacity=".45" stroke-linecap="round"><line x1="690" y1="460" x2="712" y2="482"/><line x1="712" y1="460" x2="690" y2="482"/></g>
+      <g fill="none" stroke="#9C5A26" stroke-width="3" opacity=".25"><circle cx="980" cy="170" r="46"/><path d="M980 124 v92 M934 170 h92"/></g>
+      <rect x="36" y="36" width="80" height="648" rx="40" fill="url(#g-roll)"/>
+      <rect x="1084" y="36" width="80" height="648" rx="40" fill="url(#g-roll)"/>
+      <g fill="#8B4A1E"><ellipse cx="76" cy="40" rx="30" ry="12"/><ellipse cx="76" cy="680" rx="30" ry="12"/><ellipse cx="1124" cy="40" rx="30" ry="12"/><ellipse cx="1124" cy="680" rx="30" ry="12"/></g>
+      <g fill="#fff" opacity=".35"><rect x="56" y="60" width="10" height="600" rx="5"/><rect x="1104" y="60" width="10" height="600" rx="5"/></g>
+    </symbol>
+
+    <!-- летящ остров: база + връх (върхът се сменя по вид) -->
+    <symbol id="isl-base" viewBox="0 0 160 150">
+      <ellipse cx="80" cy="146" rx="34" ry="4" fill="#0B3B5E" opacity=".18"/>
+      <polygon points="28,80 132,80 114,120 90,142 68,142 46,120" fill="#A8683A"/>
+      <polygon points="28,80 132,80 126,94 34,94" fill="#C98A52"/>
+      <polygon points="40,94 120,94 104,120 84,136 74,136 56,118" fill="#83492A"/>
+      <polygon points="80,94 120,94 104,120 88,134" fill="#6A3A20"/>
+      <polygon points="62,112 98,112 90,130 72,130" fill="#55301A"/>
+      <path d="M46 100 l6 10 M100 104 l-6 12 M72 120 l4 8" stroke="#5B321A" stroke-width="2.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="art-bubble-fish" viewBox="0 0 220 180"><circle cx="110" cy="90" r="70" fill="url(#g-bubble)"/><circle cx="110" cy="90" r="70" fill="none" stroke="#8ED3F5" stroke-width="5"/><image href="assets/img/fish_orange.png" x="55" y="35" width="110" height="110"/><circle cx="42" cy="34" r="8" fill="#DDF3FF"/><circle cx="186" cy="130" r="11" fill="#DDF3FF"/></symbol>
+
+    <!-- морски животни -->
+    <symbol id="cr-fish" viewBox="0 0 100 100"><path d="M14 50 L36 30 V70 Z" fill="#F0A33A"/><ellipse cx="60" cy="50" rx="32" ry="22" fill="#FFB84D"/><path d="M40 50 q20 -18 40 0 q-20 18 -40 0z" fill="#FFD27A" opacity=".8"/><circle cx="76" cy="44" r="5" fill="#1B2A3A"/><circle cx="78" cy="42" r="1.8" fill="#fff"/><path d="M52 62 q6 6 12 0" fill="none" stroke="#E08A1C" stroke-width="3" stroke-linecap="round"/></symbol>
+    <symbol id="cr-octo" viewBox="0 0 100 100"><circle cx="50" cy="42" r="27" fill="#EF5A7A"/><ellipse cx="50" cy="34" rx="18" ry="10" fill="#F78BA4" opacity=".7"/><circle cx="41" cy="44" r="5" fill="#1B2A3A"/><circle cx="59" cy="44" r="5" fill="#1B2A3A"/><circle cx="43" cy="42" r="1.8" fill="#fff"/><circle cx="61" cy="42" r="1.8" fill="#fff"/><path d="M26 62 q-10 18 6 24 M40 66 q-4 18 8 22 M60 66 q4 18 -8 22 M74 62 q10 18 -6 24" fill="none" stroke="#EF5A7A" stroke-width="9" stroke-linecap="round"/></symbol>
+    <symbol id="cr-jelly" viewBox="0 0 100 100"><path d="M20 52 a30 28 0 0 1 60 0 z" fill="#A98BF0"/><path d="M28 48 a22 20 0 0 1 44 0 z" fill="#C2ABF7" opacity=".7"/><path d="M28 54 v26 M40 54 v32 M52 54 v28 M64 54 v30" stroke="#A98BF0" stroke-width="6" stroke-linecap="round"/><circle cx="42" cy="40" r="4" fill="#1B2A3A"/><circle cx="58" cy="40" r="4" fill="#1B2A3A"/></symbol>
+    <symbol id="cr-star" viewBox="0 0 100 100"><path d="M50 12 l12 26 l28 3 l-21 19 l6 28 l-25 -14 l-25 14 l6 -28 l-21 -19 l28 -3 z" fill="#F26D8F"/><path d="M50 22 l8 18 l19 2 l-14 13 l4 19 l-17 -9 z" fill="#F98DA8" opacity=".6"/><circle cx="44" cy="46" r="3.5" fill="#1B2A3A"/><circle cx="56" cy="46" r="3.5" fill="#1B2A3A"/><path d="M45 56 q5 4 10 0" fill="none" stroke="#1B2A3A" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="cr-turtle" viewBox="0 0 100 100"><ellipse cx="48" cy="54" rx="30" ry="21" fill="#3FBF8F"/><ellipse cx="48" cy="51" rx="20" ry="13" fill="#2F9E74"/><path d="M36 51 l12 -8 l12 8 l-12 8 z" fill="#3FBF8F"/><circle cx="80" cy="48" r="10" fill="#3FBF8F"/><circle cx="84" cy="46" r="3" fill="#1B2A3A"/><path d="M26 68 l-8 8 M70 68 l8 8" stroke="#3FBF8F" stroke-width="7" stroke-linecap="round"/></symbol>
+    <symbol id="cr-crab" viewBox="0 0 100 100"><ellipse cx="50" cy="58" rx="27" ry="19" fill="#F0664A"/><ellipse cx="50" cy="52" rx="18" ry="10" fill="#F5866E" opacity=".7"/><circle cx="40" cy="44" r="6" fill="#fff"/><circle cx="60" cy="44" r="6" fill="#fff"/><circle cx="41" cy="45" r="3" fill="#1B2A3A"/><circle cx="61" cy="45" r="3" fill="#1B2A3A"/><path d="M26 50 q-14 -14 -6 -24 M74 50 q14 -14 6 -24" fill="none" stroke="#F0664A" stroke-width="8" stroke-linecap="round"/><path d="M30 72 l-8 8 M42 76 l-4 10 M58 76 l4 10 M70 72 l8 8" stroke="#F0664A" stroke-width="6" stroke-linecap="round"/></symbol>
+  </svg>
+</div>
+<script>fetch("content/brainstorm.json").then(r => r.json()).then(j => { window.BRAINSTORM_BANK = j; }).catch(() => {});</script>
+<script>
+// Ресурси на Букварика (от съдържанието на академията): азбука, план на уроците, срички.
+window.BUK = { readica: {}, world: {} };
+window.BUK.ready = Promise.all([
+  ...["alphabet", "lesson-plan-letters", "syllables"].map(n => fetch(`content/clean/bukvarika/resources_ru/${n}/ru.json`).then(r => r.json()).then(j => { window.BUK[n] = j; }).catch(() => {})),
+  fetch("content/clean/readica-dict/words-with-pairs-images/5.json").then(r => r.json()).then(j => { window.BUK.readica.pairs = j; }).catch(() => {}),
+  fetch("content/clean/readica-dict/sentences/5.json").then(r => r.json()).then(j => { window.BUK.readica.sentences = j; }).catch(() => {}),
+  fetch("content/clean/readica-dict/grouped-words/5.json").then(r => r.json()).then(j => { window.BUK.readica.grouped = j; }).catch(() => {}),
+  fetch("content/clean/readica-dict/base-vocabulary/5.json").then(r => r.json()).then(j => { window.BUK.readica.base = j; }).catch(() => {}),
+  fetch("content/clean/readica-dict/syllables/5.json").then(r => r.json()).then(j => { window.BUK.readica.syllables = j; }).catch(() => {}),
+  fetch("content/clean/readica-dict/mixed-syllables/5.json").then(r => r.json()).then(j => { window.BUK.readica.mixed = j; }).catch(() => {}),
+  fetch("content/clean/readica-dict/texts/5.json").then(r => r.json()).then(j => { window.BUK.readica.texts = j; }).catch(() => {}),
+  fetch("content/clean/readica-dict/phrases-with-pairs-images/5.json").then(r => r.json()).then(j => { window.BUK.readica.phrases = j; }).catch(() => {}),
+  fetch("content/clean/readica-dict/short-vocabulary-with-images/5.json").then(r => r.json()).then(j => { window.BUK.readica.shortVocab = j; }).catch(() => {}),
+  ...["outwardThings", "forestKingdom", "professions"].map(n => fetch(`content/clean/pts/subjects/theWorld/games-content/${n}/ru.json`).then(r => r.json()).then(j => { window.BUK.world[n] = j; }).catch(() => {}))
+]);
+</script>
+<script src="js/games/base.js"></script>
+<script src="js/games/words.js"></script>
+<script src="js/games/pics.js"></script>
+<script src="js/games/underwater.js"></script>
+<script src="js/games/cobweb.js"></script>
+<script src="js/games/scales.js"></script>
+<script src="js/games/composition.js"></script>
+<script src="js/games/order.js"></script><script src="js/games/numberLine.js"></script>
+<script src="js/games/brainCrush.js"></script>
+<script src="js/games/brainstorm.js"></script>
+<script src="js/games/pirateCipher.js"></script>
+<script src="js/games/brightNumbers.js"></script>
+<script src="js/games/shadowMap.js"></script>
+<script src="js/games/secretCards.js"></script>
+<script src="js/games/piratesTreasures.js"></script>
+<script src="js/games/alphabet.js"></script>
+<script src="js/games/readca.js"></script>
+<script src="js/games/soundLetterParsing.js"></script>
+<script src="js/games/letterOfElements.js"></script>
+<script src="js/games/phonemicHearing.js"></script>
+<script src="js/games/phonetics.js"></script>
+<script src="js/games/worldChoice.js"></script>
+<script src="js/games/readWords.js"></script>
+<script src="js/games/readMore.js"></script>
+<script src="js/games/worldMemory.js"></script>
+<script src="js/games/readMore2.js"></script>
+<script src="js/games/worldMore.js"></script>
+<script src="js/app.js?v=202610131936"></script>
+</body>
+</html>

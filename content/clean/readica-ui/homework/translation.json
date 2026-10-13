@@ -1,0 +1,17 @@
+{
+  "homework":"Домашна работа",
+  "completedRounds": "Завършени рунда",
+  "complete_homework": "Изпълни домашната работа",
+  "completed_homework": "Домашната работа е изпълнена",
+  "commentToTask": "Коментар към домашната работа",
+  "noCommentToTask": "Няма коментар",
+  "stage": "Етап",
+  "task":"Задача",
+  "watchCartoon": "Гледай анимацията",
+  "roundFinish" : {
+    "allowNewRound": "Достъпен е нов рунд",
+    "roundFinished": "Рунда е завършен",
+    "newRoundTomorrow": "Новият рунд ще е достъпен утре",
+    "forUnblockRound": "За да пристъпите към изпълнение на задачата кликнете върху бутона"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "settings": "Настройки",
+  "start": "Старт",
+  "info": "Информация",
+  "targets": "Цели",
+  "seconds": "сек",
+  "min": "мин",
+  "controls": {
+    "level": "Ниво",
+    "dimension": "Разряд на числата",
+    "maxNumber":"Максимална цифра",
+    "gameTime": "Время на игра",
+    "hiddenNumbersQty": "Брой пропуснати числа",
+    "numbersInRow": "Числа в реда",
+    "examplesQty": "Брой отговори",
+    "exampleQty": "Брой примери",
+    "gameType": "Тип игра",
+    "startSpeed": "Стартова скорост",
+    "showNumberOnTop": "Показване на числото отгоре",
+    "showLayout": "Показване на модела",
+    "showPrompts": "Подсказка",
+    "numbersInExample": "Брой действия",
+    "theme": "Тема",
+    "subTheme": "Подтема",
+    "digits": "Подтема",
+    "speed": "Скорост",
+    "mode": "Режим",
+    "gameFieldSize": "Размер на полето",
+    "newItemQty": "Брой предмети",
+    "complexity": "Сложност",
+    "rowsQty": "Брой редове",
+    "sweetsQty": "Брой сладки",
+    "answerTime": "Време за отговор",
+    "personType": "Персонаж",
+    "lessonNumber": "Номер на урока",
+    "actionType": "Избор на действие",
+    "playingWithII": "Игра с ИИ",
+    "levelII": "Ниво ИИ",
+    "direction": "Направление",
+    "fieldsInRow": "Полета в реда",
+
+    "gameFieldType": "Тип поле",
+    "heroesQty": "Брой персонажи",
+
+    "studentTeam": "отбор на ученика",
+
+    "locomotivesQty": "Брой локомотиви",
+    "maps": "Карта",
+    "picture": "Картинка",
+    "countRange": "Диапазаон на смятане",
+    "magnitudes": "Мерни единици",
+    "section": "Раздел",
+
+    "oneDim": "Единици",
+    "twoDim": "Десетици",
+    "fractions": "Дроби",
+    
+
+    "time": "Време на игра",
+    "dataComplexity": "Речник",
+    "flyElemsQty": "Летящи облачета",
+    "lettersQty": "Букви в дума",
+    "wordsCategory": "Категория думи",
+    "answersQty": "Брой отговори",
+    "syllablesCategory": "Категория срички",
+    "maxLettersQty": "Максимум букви",
+    "minLettersQty": "Минимум букви",
+
+    "autoSwitch": "Автоматично превключване"
+  },
+  "values": {
+    "yes": "Да",
+    "no": "Не",
+
+    "friends": "Приятели",
+    "cross": "Преход",
+    "easy": "Просто",
+    "brothers": "Братя",
+    "brothers_friends": "Приятели и Братя",
+    "anzan": "Анзан",
+    "add": "Събиране",
+    "subtract": "Изваждане",
+    "add-substract": "Събиране и изваждане",
+    "multiply-divide": "Умножение и деление",
+    "random": "Случайни числа",
+    "simple": "Лек",
+    "middle": "Среден",
+    "complex": "Сложен",
+    "extreme": "Екстремен",
+
+    "empty": "Празно поле",
+    "obstacle": "Препятствия",
+    "maze": "Лабиринт",
+
+    "knight":"Рицар",
+    "dragon":"Дракон",
+
+    "blue":"Син",
+    "red":"Червен",
+
+    "vitaminka": "Витаминка",
+    "it": "Айти",
+
+    "marathon": "Маратон",
+    "faultless": "Безпогрешно",
+    "fit": "Фитинг",
+    "free": "Свободен",
+
+    "multiplication": "Умножение",
+    "division": "Деление",
+    "randomAction": "Случайно",
+
+    "addition": "Събиране",
+    "subtraction": "Изваждане",
+    "straight": "Напред",
+    "back": "Обратно",
+
+    "oneDim": "Единици",
+    "twoDim": "Десетици",
+    "threeDim": "Стотици",
+    "fourDim": "Хилядни",
+
+    "cm": "см",
+    "dm": "дм",
+    "m": "м",
+    "km": "км",
+    "gr": "гр",
+    "kg": "кг",
+    "q": "ц" - pls take this out
+    "tn": "т",
+
+    "checkAll": "Избери всички",
+
+    "numbersActions": "Действия с числа",
+    "numbersOrder": "Ред на числата",
+    "magnitudes": "Единици за измерване",
+
+    "mushrooms": "Гъби",
+    "transport": "Транспорт",
+
+    "flatFigures": "Плоски фигури",
+    "volumetricFigures": "Обемни фигури",
+
+    "wrongFractions": "Неправилни",
+    "correctFractions": "Правилни",
+
+    "properFraction": "Правилна дроб",
+    "improperFraction": "Неправилна дроб",
+
+    "trees": "Дървета",
+    "animals": "Животни",
+
+    "item": "Предмет",
+    "sign": "Признак",
+    "action": "Действие"
+  }
+}
